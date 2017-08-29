@@ -1,0 +1,1 @@
+# Choreonoid用のKobukiのファイル
