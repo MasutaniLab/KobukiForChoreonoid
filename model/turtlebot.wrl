@@ -724,7 +724,7 @@ DEF Turtlebot Humanoid {
         DEF wheel_left_joint Joint {
           jointType "rotate"
           jointAxis 0.0 -3.67321000044e-06 0.999999999993
-          jointId 0
+          jointId 1
           translation 0.0 0.115 0.0352
           rotation -1.0 -0.0 -0.0 1.5708
           ulimit 1e+16
@@ -774,7 +774,7 @@ DEF Turtlebot Humanoid {
         DEF wheel_right_joint Joint {
           jointType "rotate"
           jointAxis 0.0 -3.67321000044e-06 0.999999999993
-          jointId 1
+          jointId 0
           translation 0.0 -0.115 0.0352
           rotation -1.0 -0.0 -0.0 1.5708
           ulimit 1e+16
