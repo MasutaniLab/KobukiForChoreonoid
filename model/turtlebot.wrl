@@ -1,0 +1,765 @@
+#VRML V2.0 utf8
+
+PROTO Joint [
+  exposedField     SFVec3f      center              0 0 0
+  exposedField     MFNode       children            []
+  exposedField     MFFloat      llimit              []
+  exposedField     MFFloat      lvlimit             []
+  exposedField     SFRotation   limitOrientation    0 0 1 0
+  exposedField     SFString     name                ""
+  exposedField     SFRotation   rotation            0 0 1 0
+  exposedField     SFVec3f      scale               1 1 1
+  exposedField     SFRotation   scaleOrientation    0 0 1 0
+  exposedField     MFFloat      stiffness           [ 0 0 0 ]
+  exposedField     SFVec3f      translation         0 0 0
+  exposedField     MFFloat      ulimit              []
+  exposedField     MFFloat      uvlimit             []
+  exposedField     SFString     jointType           ""
+  exposedField     SFInt32      jointId             -1
+  exposedField     SFVec3f      jointAxis           0 0 1
+
+  exposedField     SFFloat      gearRatio           1
+  exposedField     SFFloat      rotorInertia        0
+  exposedField     SFFloat      rotorResistor       0
+  exposedField     SFFloat      torqueConst         1
+  exposedField     SFFloat      encoderPulse        1
+]
+{
+  Transform {
+    center           IS center
+    children         IS children
+    rotation         IS rotation
+    scale            IS scale
+    scaleOrientation IS scaleOrientation
+    translation      IS translation
+  }
+}
+
+PROTO Segment [
+  field           SFVec3f     bboxCenter        0 0 0
+  field           SFVec3f     bboxSize          -1 -1 -1
+  exposedField    SFVec3f     centerOfMass      0 0 0
+  exposedField    MFNode      children          [ ]
+  exposedField    SFNode      coord             NULL
+  exposedField    MFNode      displacers        [ ]
+  exposedField    SFFloat     mass              0
+  exposedField    MFFloat     momentsOfInertia  [ 0 0 0 0 0 0 0 0 0 ]
+  exposedField    SFString    name              ""
+  eventIn         MFNode      addChildren
+  eventIn         MFNode      removeChildren
+]
+{
+  Group {
+    addChildren    IS addChildren
+    bboxCenter     IS bboxCenter
+    bboxSize       IS bboxSize
+    children       IS children
+    removeChildren IS removeChildren
+  }
+}
+
+PROTO Surface [
+ field   SFVec3f bboxCenter 0 0 0
+ field   SFVec3f bboxSize   -1 -1 -1
+ field   MFNode  visual     [ ]
+ field   MFNode  collision  [ ]
+ eventIn MFNode  addChildren
+ eventIn MFNode  removeChildren
+]
+{
+  Group {
+    addChildren    IS addChildren
+    bboxCenter     IS bboxCenter
+    bboxSize       IS bboxSize
+    children       IS visual
+    removeChildren IS removeChildren
+  }
+}
+
+PROTO Humanoid [
+  field           SFVec3f    bboxCenter            0 0 0
+  field           SFVec3f    bboxSize              -1 -1 -1
+  exposedField    SFVec3f    center                0 0 0
+  exposedField    MFNode     humanoidBody          [ ]
+  exposedField    MFString   info                  [ ]
+  exposedField    MFNode     joints                [ ]
+  exposedField    SFString   name                  ""
+  exposedField    SFRotation rotation              0 0 1 0
+  exposedField    SFVec3f    scale                 1 1 1
+  exposedField    SFRotation scaleOrientation      0 0 1 0
+  exposedField    MFNode     segments              [ ]
+  exposedField    MFNode     sites                 [ ]
+  exposedField    SFVec3f    translation           0 0 0
+  exposedField    SFString   version               "1.1"
+  exposedField    MFNode     viewpoints            [ ]
+]
+{
+  Transform {
+    bboxCenter       IS bboxCenter
+    bboxSize         IS bboxSize
+    center           IS center
+    rotation         IS rotation
+    scale            IS scale
+    scaleOrientation IS scaleOrientation
+    translation      IS translation
+    children [
+      Group {
+        children IS viewpoints
+      }
+    ]
+  }
+}
+
+PROTO ExtraJoint [
+  exposedField SFString link1Name ""
+  exposedField SFString link2Name ""
+  exposedField SFVec3f  link1LocalPos 0 0 0
+  exposedField SFVec3f  link2LocalPos 0 0 0
+  exposedField SFString jointType "xyz"
+  exposedField SFVec3f  jointAxis 1 0 0
+]
+{
+}
+
+
+
+DEF base_footprint Humanoid {
+  humanoidBody [
+    DEF base_footprint Joint {
+      jointType "free"
+      translation 0.0 0.0 0.0
+      rotation 0 1 0 0
+      children [
+        DEF base_footprint Segment {
+          mass 4.9213
+          centerOfMass -0.00949586 1.25983e-05 0.135573
+          momentsOfInertia [0.142129 -4.09257e-06 0.0154899 -4.09257e-06 0.140784 6.52071e-06 0.0154899 6.52071e-06 0.0801071]
+          children [
+            Surface {
+              visual [
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.001 0.0 0.06219
+                  rotation 0 1 0 0
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_base_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.118 0.0 0.2812
+                  rotation -0.0 -0.0 1.0 1.5708
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_camera_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.02364 0.0 0.1408
+                  rotation 0 1 0 0
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_plate_bottom_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.01364 0.0 0.1976
+                  rotation 0 1 0 0
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_plate_middle_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.01364 0.0 0.4068
+                  rotation 0 1 0 0
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_plate_top_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.12 0.082 0.113
+                  rotation 0 1 0 0
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_bottom_0_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.055 0.12 0.113
+                  rotation 0 1 0 0
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_bottom_1_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.055 0.12 0.113
+                  rotation 0 1 0 0
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_bottom_2_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.12 -0.082 0.113
+                  rotation 0 1 0 0
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_bottom_3_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.055 -0.12 0.113
+                  rotation 0 1 0 0
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_bottom_4_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.055 -0.12 0.113
+                  rotation 0 1 0 0
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_bottom_5_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.1024 0.098 0.2374
+                  rotation 0 1 0 0
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_kinect_0_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.1024 -0.098 0.2374
+                  rotation 0 1 0 0
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_kinect_1_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.0381 0.1505 0.1742
+                  rotation 1.32678921756e-06 0.999999999998 1.32678921756e-06 3.14159265359
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_middle_0_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.0381 -0.1505 0.1742
+                  rotation 1.32678921756e-06 0.999999999998 1.32678921756e-06 3.14159265359
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_middle_1_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.0381 0.1505 0.1742
+                  rotation 1.32678921756e-06 0.999999999998 1.32678921756e-06 3.14159265359
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_middle_2_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.0381 -0.1505 0.1742
+                  rotation 1.32678921756e-06 0.999999999998 1.32678921756e-06 3.14159265359
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_middle_3_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.0381 0.1505 0.3022
+                  rotation 0 1 0 0
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_top_0_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.0381 -0.1505 0.3022
+                  rotation 0 1 0 0
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_top_1_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.0381 0.1505 0.3022
+                  rotation 0 1 0 0
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_top_2_link.wrl"
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.0381 -0.1505 0.3022
+                  rotation 0 1 0 0
+                  children [
+                    Inline {
+                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_top_3_link.wrl"
+                    }
+                  ]
+                }
+              ]
+              collision [
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.0 0.0 0.06969
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.178
+                        height 0.10938
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.118 0.0 0.2812
+                  rotation 0 1 0 0
+                  children [
+                    Shape {
+                      geometry Box {
+                        size 0.07271 0.27794 0.073
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.135 0.0 0.0192
+                  rotation 0 1 0 0
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.017
+                        height 0.0176
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.115 0.0 0.0172
+                  rotation 0 1 0 0
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.017
+                        height 0.0176
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.0 0.0 0.1408
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.17
+                        height 0.006
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.0 0.0 0.1976
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.17
+                        height 0.006
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.0 0.0 0.4068
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.17
+                        height 0.006
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.12 0.082 0.113
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.006
+                        height 0.0492
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.055 0.12 0.113
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.006
+                        height 0.0492
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.055 0.12 0.113
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.006
+                        height 0.0492
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.12 -0.082 0.113
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.006
+                        height 0.0492
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.055 -0.12 0.113
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.006
+                        height 0.0492
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.055 -0.12 0.113
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.006
+                        height 0.0492
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.1024 0.098 0.2474
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.006
+                        height 0.0936
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.1024 -0.098 0.2474
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.006
+                        height 0.0936
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.0381 0.1505 0.1742
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.006
+                        height 0.0608
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.0381 -0.1505 0.1742
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.006
+                        height 0.0608
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.0381 0.1505 0.1742
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.006
+                        height 0.0608
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.0381 -0.1505 0.1742
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.006
+                        height 0.0608
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.0381 0.1505 0.3022
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.006
+                        height 0.2032
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation 0.0381 -0.1505 0.3022
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.006
+                        height 0.2032
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.0381 0.1505 0.3022
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.006
+                        height 0.2032
+                      }
+                    }
+                  ]
+                }
+                Transform {
+                  scale 1.0 1.0 1.0
+                  translation -0.0381 -0.1505 0.3022
+                  rotation 1.0 -0.0 -0.0 1.57079632679
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        radius 0.006
+                        height 0.2032
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+            
+        DEF wheel_left_joint Joint {
+          jointType "rotate"
+          jointAxis 0.0 -3.67321000044e-06 0.999999999993
+          jointId 0
+          translation 0.0 0.115 0.0352
+          rotation -1.0 -0.0 -0.0 1.5708
+          ulimit 1e+16
+          llimit -1e+16
+          uvlimit inf
+          lvlimit -inf
+          children [
+            DEF wheel_left_link Segment {
+              mass 0.01
+              centerOfMass 0.0 0.0 0.0
+              momentsOfInertia [0.001 0.0 0.0 0.0 0.001 0.0 0.0 0.0 0.001]
+              children [
+                Surface {
+                  visual [
+                    Transform {
+                      scale 1.0 1.0 1.0
+                      translation 0.0 0.0 0.0
+                      rotation 0 1 0 0
+                      children [
+                        Inline {
+                          url "turtlebot-wheel_left_link-turtlebot-wheel_left_link_visual.wrl"
+                        }
+                      ]
+                    }
+                  ]
+                  collision [
+                    Transform {
+                      scale 1.0 1.0 1.0
+                      translation 0.0 0.0 0.0
+                      rotation 1.0 -0.0 -0.0 1.57079632679
+                      children [
+                        Shape {
+                          geometry Cylinder {
+                            radius 0.0352
+                            height 0.0206
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+                
+          ]
+        }
+        DEF wheel_right_joint Joint {
+          jointType "rotate"
+          jointAxis 0.0 -3.67321000044e-06 0.999999999993
+          jointId 1
+          translation 0.0 -0.115 0.0352
+          rotation -1.0 -0.0 -0.0 1.5708
+          ulimit 1e+16
+          llimit -1e+16
+          uvlimit inf
+          lvlimit -inf
+          children [
+            DEF wheel_right_link Segment {
+              mass 0.01
+              centerOfMass 0.0 0.0 0.0
+              momentsOfInertia [0.001 0.0 0.0 0.0 0.001 0.0 0.0 0.0 0.001]
+              children [
+                Surface {
+                  visual [
+                    Transform {
+                      scale 1.0 1.0 1.0
+                      translation 0.0 0.0 0.0
+                      rotation 0 1 0 0
+                      children [
+                        Inline {
+                          url "turtlebot-wheel_right_link-turtlebot-wheel_right_link_visual.wrl"
+                        }
+                      ]
+                    }
+                  ]
+                  collision [
+                    Transform {
+                      scale 1.0 1.0 1.0
+                      translation 0.0 0.0 0.0
+                      rotation 1.0 -0.0 -0.0 1.57079632679
+                      children [
+                        Shape {
+                          geometry Cylinder {
+                            radius 0.035
+                            height 0.0206
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+                
+          ]
+        }
+      ]
+    }
+  ]
+  joints [
+    USE wheel_left_joint,
+    USE wheel_right_joint
+  ]
+  
+  name "base_footprint"
+  version "1.0"
+}
