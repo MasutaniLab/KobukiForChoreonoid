@@ -122,8 +122,76 @@ PROTO ExtraJoint [
 }
 
 
+PROTO VisionSensor [
+ exposedField SFVec3f    translation       0 0 0
+ exposedField SFRotation rotation              0 0 1 0
+ #exposedField SFRotation orientation       0 0 1 0
+ exposedField SFFloat    fieldOfView       0.785398
+ exposedField SFString   name              ""
+ exposedField SFFloat    frontClipDistance 0.01
+ exposedField SFFloat    backClipDistance  10.0
+ exposedField SFString   type              "NONE"
+ exposedField SFInt32    sensorId          -1
+ exposedField SFInt32    width             320  # 
+ exposedField SFInt32    height            240  # 
+ #exposedField MFNode       children            [] # for me
+ exposedField SFFloat    frameRate         30
+]
+{
+  Transform {
+    rotation         IS rotation
+    translation      IS translation
+    #children IS children # for me
+  }
+}
 
-DEF base_footprint Humanoid {
+PROTO ForceSensor [
+  exposedField SFVec3f maxForce -1 -1 -1
+  exposedField SFVec3f maxTorque -1 -1 -1
+  exposedField SFVec3f translation 0 0 0
+  exposedField SFRotation rotation 0 0 1 0
+  exposedField SFInt32 sensorId -1
+]
+{
+  Transform {
+    translation IS translation
+    rotation IS rotation
+  }
+}
+
+PROTO Gyro [
+  exposedField SFVec3f    maxAngularVelocity -1 -1 -1
+  exposedField SFVec3f    translation        0 0 0
+  exposedField SFRotation rotation           0 0 1 0
+  exposedField SFInt32    sensorId           -1
+]
+{
+  Transform {
+    translation IS translation
+    rotation    IS rotation
+  }
+}
+
+PROTO RangeSensor [
+ exposedField SFVec3f    translation       0 0 0
+ exposedField SFRotation rotation          0 0 1 0
+ exposedField MFNode     children          [ ]
+ exposedField SFInt32    sensorId          -1
+ exposedField SFFloat    scanAngle         3.14159 #[rad]
+ exposedField SFFloat    scanStep          0.1     #[rad]
+ exposedField SFFloat    scanRate          10      #[Hz]
+ exposedField SFFloat    minDistance        0.01
+ exposedField SFFloat    maxDistance        10
+]
+{
+  Transform {
+    rotation         IS rotation
+    translation      IS translation
+    children         IS children
+  }
+}
+
+DEF Turtlebot Humanoid {
   humanoidBody [
     DEF base_footprint Joint {
       jointType "free"
