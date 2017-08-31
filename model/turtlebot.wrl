@@ -216,16 +216,17 @@ DEF Turtlebot Humanoid {
                     }
                   ]
                 }
-                Transform {
-                  scale 1.0 1.0 1.0
-                  translation -0.118 0.0 0.2812
-                  rotation -0.0 -0.0 1.0 1.5708
-                  children [
-                    Inline {
-                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_camera_link.wrl"
-                    }
-                  ]
-                }
+		# Kinect視覚形状
+                # Transform {
+                #   scale 1.0 1.0 1.0
+                #   translation -0.118 0.0 0.2812
+                #   rotation -0.0 -0.0 1.0 1.5708
+                #   children [
+                #     Inline {
+                #       url "turtlebot-base_footprint-turtlebot-base_footprint_visual_camera_link.wrl"
+                #     }
+                #   ]
+                # }
                 Transform {
                   scale 1.0 1.0 1.0
                   translation 0.02364 0.0 0.1408
@@ -316,26 +317,27 @@ DEF Turtlebot Humanoid {
                     }
                   ]
                 }
-                Transform {
-                  scale 1.0 1.0 1.0
-                  translation -0.1024 0.098 0.2374
-                  rotation 0 1 0 0
-                  children [
-                    Inline {
-                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_kinect_0_link.wrl"
-                    }
-                  ]
-                }
-                Transform {
-                  scale 1.0 1.0 1.0
-                  translation -0.1024 -0.098 0.2374
-                  rotation 0 1 0 0
-                  children [
-                    Inline {
-                      url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_kinect_1_link.wrl"
-                    }
-                  ]
-                }
+		# Kinect用ポール 視覚形状
+                # Transform {
+                #   scale 1.0 1.0 1.0
+                #   translation -0.1024 0.098 0.2374
+                #   rotation 0 1 0 0
+                #   children [
+                #     Inline {
+                #       url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_kinect_0_link.wrl"
+                #     }
+                #   ]
+                # }
+                # Transform {
+                #   scale 1.0 1.0 1.0
+                #   translation -0.1024 -0.098 0.2374
+                #   rotation 0 1 0 0
+                #   children [
+                #     Inline {
+                #       url "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_kinect_1_link.wrl"
+                #     }
+                #   ]
+                # }
                 Transform {
                   scale 1.0 1.0 1.0
                   translation 0.0381 0.1505 0.1742
@@ -431,18 +433,19 @@ DEF Turtlebot Humanoid {
                     }
                   ]
                 }
-                Transform {
-                  scale 1.0 1.0 1.0
-                  translation -0.118 0.0 0.2812
-                  rotation 0 1 0 0
-                  children [
-                    Shape {
-                      geometry Box {
-                        size 0.07271 0.27794 0.073
-                      }
-                    }
-                  ]
-                }
+		# Kinect干渉形状
+                # Transform {
+                #   scale 1.0 1.0 1.0
+                #   translation -0.118 0.0 0.2812
+                #   rotation 0 1 0 0
+                #   children [
+                #     Shape {
+                #       geometry Box {
+                #         size 0.07271 0.27794 0.073
+                #       }
+                #     }
+                #   ]
+                # }
                 Transform {
                   scale 1.0 1.0 1.0
                   translation -0.135 0.0 0.0192
@@ -586,32 +589,33 @@ DEF Turtlebot Humanoid {
                     }
                   ]
                 }
-                Transform {
-                  scale 1.0 1.0 1.0
-                  translation -0.1024 0.098 0.2474
-                  rotation 1.0 -0.0 -0.0 1.57079632679
-                  children [
-                    Shape {
-                      geometry Cylinder {
-                        radius 0.006
-                        height 0.0936
-                      }
-                    }
-                  ]
-                }
-                Transform {
-                  scale 1.0 1.0 1.0
-                  translation -0.1024 -0.098 0.2474
-                  rotation 1.0 -0.0 -0.0 1.57079632679
-                  children [
-                    Shape {
-                      geometry Cylinder {
-                        radius 0.006
-                        height 0.0936
-                      }
-                    }
-                  ]
-                }
+		# Kinect用ポール 干渉形状
+                # Transform {
+                #   scale 1.0 1.0 1.0
+                #   translation -0.1024 0.098 0.2474
+                #   rotation 1.0 -0.0 -0.0 1.57079632679
+                #   children [
+                #     Shape {
+                #       geometry Cylinder {
+                #         radius 0.006
+                #         height 0.0936
+                #       }
+                #     }
+                #   ]
+                # }
+                # Transform {
+                #   scale 1.0 1.0 1.0
+                #   translation -0.1024 -0.098 0.2474
+                #   rotation 1.0 -0.0 -0.0 1.57079632679
+                #   children [
+                #     Shape {
+                #       geometry Cylinder {
+                #         radius 0.006
+                #         height 0.0936
+                #       }
+                #     }
+                #   ]
+                # }
                 Transform {
                   scale 1.0 1.0 1.0
                   translation 0.0381 0.1505 0.1742
