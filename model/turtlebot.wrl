@@ -454,7 +454,13 @@ DEF Turtlebot Humanoid {
                     Shape {
                       geometry Cylinder {
                         radius 0.017
-                        height 0.0176
+                        height 0.001
+                        #height 0.0176
+                      }
+                      appearance Appearance {
+                        material Material {
+                          diffuseColor 0 0 1
+                        }
                       }
                     }
                   ]
@@ -467,7 +473,13 @@ DEF Turtlebot Humanoid {
                     Shape {
                       geometry Cylinder {
                         radius 0.017
-                        height 0.0176
+                        height 0.001
+                        #height 0.0176
+                      }
+                      appearance Appearance {
+                        material Material {
+                          diffuseColor 0 0 1
+                        }
                       }
                     }
                   ]
