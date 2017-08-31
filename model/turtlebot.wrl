@@ -198,6 +198,7 @@ DEF Turtlebot Humanoid {
       translation 0.0 0.0 0.0
       rotation 0 1 0 0
       children [
+        DEF gyro Gyro { sensorId 0 }
         DEF base_footprint Segment {
           mass 4.9213
           centerOfMass -0.00949586 1.25983e-05 0.135573
