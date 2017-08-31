@@ -1,0 +1,83 @@
+Transform {
+  center 0 0 0
+  rotation 0 0 1 1.5708
+  scale 1 1 1
+  scaleOrientation 0 0 1 0
+  translation -0.5 2 0.1
+  children [
+    Shape {
+      appearance
+        Appearance {
+          material
+            Material {
+              ambientIntensity 0.2
+              diffuseColor 0.5 0.5 0.5
+              emissiveColor 0 0 0
+              shininess 0.2
+              specularColor 0 0 0
+              transparency 0
+            }
+        }
+      geometry
+        Box {
+          size 4.5 0.1 0.2
+        }
+    }
+  ]
+}
+
+Transform {
+  center 0 0 0
+  rotation 1 0 0 0
+  scale 1 1 1
+  scaleOrientation 0 0 1 0
+  translation 1 4.25 0.1
+  children [
+    Shape {
+      appearance
+        Appearance {
+          material
+            Material {
+              ambientIntensity 0.2
+              diffuseColor 0.5 0.5 0.5
+              emissiveColor 0 0 0
+              shininess 0.2
+              specularColor 0 0 0
+              transparency 0
+            }
+        }
+      geometry
+        Box {
+          size 3 0.1 0.2
+        }
+    }
+  ]
+}
+
+Transform {
+  center 0 0 0
+  rotation 0 0 1 1.5708
+  scale 1 1 1
+  scaleOrientation 0 0 1 0
+  translation 2.5 2 0.1
+  children [
+    Shape {
+      appearance
+        Appearance {
+          material
+            Material {
+              ambientIntensity 0.2
+              diffuseColor 0.5 0.5 0.5
+              emissiveColor 0 0 0
+              shininess 0.2
+              specularColor 0 0 0
+              transparency 0
+            }
+        }
+      geometry
+        Box {
+          size 4.5 0.1 0.2
+        }
+    }
+  ]
+}
