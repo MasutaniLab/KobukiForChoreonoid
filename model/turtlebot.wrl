@@ -850,6 +850,119 @@ DEF Turtlebot Humanoid {
                 
           ]
         }
+        
+        
+        DEF bumperJoint Joint {
+          jointType "fixed"
+          translation 0 0 0.055
+          children [
+            DEF clink Segment {
+              mass 0.01
+              centerOfMass 0 0 0
+              momentsOfInertia
+                [
+                  0.0000167 0 0 
+                  0 0.0000167 0 
+                  0 0 0.0000167 
+                ]
+              children [
+                Surface {
+                  visual [
+                  ]
+                  collision [
+
+                    Transform {
+                      center 0 0 0
+                      rotation 1 0 0 0
+                      scale 1 1 1
+                      scaleOrientation 0 0 1 0
+                      translation 0.1785 0 0
+                      children [
+                        Shape {
+                          geometry
+                            Box {
+                              size 0.001 0.095 0.07
+                            }
+                        }
+                      ]
+                    }
+
+                    Transform {
+                      center -0.1785 0 0
+                      rotation 0 0 1 0.52359877559829887308
+                      scale 1 1 1
+                      scaleOrientation 0 0 1 0
+                      translation 0.1785 0 0
+                      children [
+                        Shape {
+                          geometry
+                            Box {
+                              size 0.001 0.095 0.07
+                            }
+                        }
+                      ]
+                    }
+
+                    Transform {
+                      center -0.1785 0 0
+                      rotation 0 0 1 1.04719755119659774615
+                      scale 1 1 1
+                      scaleOrientation 0 0 1 0
+                      translation 0.1785 0 0
+                      children [
+                        Shape {
+                          geometry
+                            Box {
+                              size 0.001 0.095 0.07
+                            }
+                        }
+                      ]
+                    }
+
+                    Transform {
+                      center -0.1785 0 0
+                      rotation 0 0 1 -0.52359877559829887308
+                      scale 1 1 1
+                      scaleOrientation 0 0 1 0
+                      translation 0.1785 0 0
+                      children [
+                        Shape {
+                          geometry
+                            Box {
+                              size 0.001 0.095 0.07
+                            }
+                        }
+                      ]
+                    }
+
+                    Transform {
+                      center -0.1785 0 0
+                      rotation 0 0 1 -1.04719755119659774615
+                      scale 1 1 1
+                      scaleOrientation 0 0 1 0
+                      translation 0.1785 0 0
+                      children [
+                        Shape {
+                          geometry
+                            Box {
+                              size 0.001 0.095 0.07
+                            }
+                        }
+                      ]
+                    }
+
+                  ]
+                }
+              ]
+            }
+            DEF bumperForce ForceSensor {
+              rotation 1 0 0 0
+              translation 0 0 0
+              sensorId 1
+            }
+          ]
+        }
+	
       ]
     }
   ]
