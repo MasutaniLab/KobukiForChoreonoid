@@ -1,0 +1,849 @@
+#VRML V2.0 utf8
+
+PROTO Joint [
+  exposedField     SFVec3f      center              0 0 0
+  exposedField     MFNode       children            []
+  exposedField     MFFloat      llimit              []
+  exposedField     MFFloat      lvlimit             []
+  exposedField     SFRotation   limitOrientation    0 0 1 0
+  exposedField     SFString     name                ""
+  exposedField     SFRotation   rotation            0 0 1 0
+  exposedField     SFVec3f      scale               1 1 1
+  exposedField     SFRotation   scaleOrientation    0 0 1 0
+  exposedField     MFFloat      stiffness           [ 0 0 0 ]
+  exposedField     SFVec3f      translation         0 0 0
+  exposedField     MFFloat      ulimit              []
+  exposedField     MFFloat      uvlimit             []
+  exposedField     SFString     jointType           ""
+  exposedField     SFInt32      jointId             -1
+#  exposedField     SFString     jointAxis           "Z"
+  exposedField     SFVec3f      jointAxis           0 0 1
+
+  exposedField     SFFloat      gearRatio           1
+  exposedField     SFFloat      rotorInertia        0
+  exposedField     SFFloat      rotorResistor       0
+  exposedField     SFFloat      torqueConst         1
+  exposedField     SFFloat      encoderPulse        1
+]
+{
+  Transform {
+    center           IS center
+    children         IS children
+    rotation         IS rotation
+    scale            IS scale
+    scaleOrientation IS scaleOrientation
+    translation      IS translation
+  }
+}
+
+PROTO Segment [
+    field           SFVec3f     bboxCenter        0 0 0
+    field           SFVec3f     bboxSize          -1 -1 -1
+    exposedField    SFVec3f     centerOfMass      0 0 0
+    exposedField    MFNode      children          [ ]
+    exposedField    SFNode      coord             NULL
+    exposedField    MFNode      displacers        [ ]
+    exposedField    SFFloat     mass              0
+    exposedField    MFFloat     momentsOfInertia  [ 0 0 0 0 0 0 0 0 0 ]
+    exposedField    SFString    name              ""
+    eventIn         MFNode      addChildren
+    eventIn         MFNode      removeChildren
+]
+{
+    Group {
+        addChildren    IS addChildren
+        bboxCenter     IS bboxCenter
+        bboxSize       IS bboxSize
+        children       IS children
+        removeChildren IS removeChildren
+    }
+}
+
+PROTO Humanoid [
+    field           SFVec3f    bboxCenter            0 0 0
+    field           SFVec3f    bboxSize              -1 -1 -1
+    exposedField    SFVec3f    center                0 0 0
+    exposedField    MFNode     humanoidBody          [ ]
+    exposedField    MFString   info                  [ ]
+    exposedField    MFNode     joints                [ ]
+    exposedField    SFString   name                  ""
+    exposedField    SFRotation rotation              0 0 1 0
+    exposedField    SFVec3f    scale                 1 1 1
+    exposedField    SFRotation scaleOrientation      0 0 1 0
+    exposedField    MFNode     segments              [ ]
+    exposedField    MFNode     sites                 [ ]
+    exposedField    SFVec3f    translation           0 0 0
+    exposedField    SFString   version               "1.1"
+    exposedField    MFNode     viewpoints            [ ]
+]
+{
+  Transform {
+    bboxCenter       IS bboxCenter
+    bboxSize         IS bboxSize
+    center           IS center
+    rotation         IS rotation
+    scale            IS scale
+    scaleOrientation IS scaleOrientation
+    translation      IS translation
+    children [
+      Group {
+        children IS viewpoints
+      }
+      Group {
+        children IS humanoidBody
+      }
+    ]
+  }
+}
+
+PROTO VisionSensor [
+  exposedField SFVec3f    translation       0 0 0
+  exposedField SFRotation rotation          0 0 1 0
+  exposedField MFNode     children          [ ]
+  exposedField SFFloat    fieldOfView       0.785398
+  exposedField SFString   name              ""
+  exposedField SFFloat    frontClipDistance 0.01
+  exposedField SFFloat    backClipDistance  10.0
+  exposedField SFString   type              "NONE"
+  exposedField SFInt32    sensorId          -1
+  exposedField SFInt32    width             320
+  exposedField SFInt32    height            240
+  exposedField SFFloat    frameRate         30    # add by takekawa 081210
+]
+{
+  Transform {
+    rotation         IS rotation
+    translation      IS translation
+    children         IS children
+  }
+}
+
+PROTO RangeSensor [
+  exposedField SFVec3f    translation       0 0 0
+  exposedField SFRotation rotation          0 0 1 0
+  exposedField MFNode     children          [ ]
+  exposedField SFInt32    sensorId          -1
+  exposedField SFFloat    scanAngle         3.14159 #[rad]
+  exposedField SFFloat    scanStep          0.1     #[rad]
+  exposedField SFFloat    scanRate          10      #[Hz]
+  exposedField SFFloat    maxDistance	    10
+]
+{
+  Transform {
+    rotation         IS rotation
+    translation      IS translation
+    children         IS children
+  }
+}
+
+
+PROTO ForceSensor [  
+  exposedField SFVec3f    maxForce    -1 -1 -1
+  exposedField SFVec3f    maxTorque   -1 -1 -1
+  exposedField SFVec3f    translation 0 0 0
+  exposedField SFRotation rotation    0 0 1 0
+  exposedField SFInt32    sensorId    -1
+]
+{
+  Transform {
+    translation IS translation
+    rotation    IS rotation
+  }
+}
+
+PROTO Gyro [
+  exposedField SFVec3f    maxAngularVelocity -1 -1 -1
+  exposedField SFVec3f    translation        0 0 0
+  exposedField SFRotation rotation           0 0 1 0
+  exposedField SFInt32    sensorId           -1
+]
+{
+  Transform {
+    translation IS translation
+    rotation    IS rotation
+  }
+}
+
+PROTO AccelerationSensor [
+  exposedField SFVec3f    maxAcceleration -1 -1 -1
+  exposedField SFVec3f    translation     0 0 0
+  exposedField SFRotation rotation        0 0 1 0
+  exposedField SFInt32    sensorId        -1
+]
+{
+  Transform {
+    translation IS translation
+    rotation    IS rotation
+  }
+}
+
+PROTO PressureSensor [
+  exposedField SFFloat    maxPressure -1
+  exposedField SFVec3f    translation 0 0 0
+  exposedField SFRotation rotation    0 0 1 0
+  exposedField SFInt32    sensorId    -1
+]
+{
+  Transform {
+    translation IS translation
+    rotation    IS rotation
+  }
+}
+
+PROTO PhotoInterrupter [
+  exposedField SFVec3f transmitter 0 0 0
+  exposedField SFVec3f receiver    0 0 0
+  exposedField SFInt32 sensorId    -1
+]
+{
+  Transform{
+    children [
+      Transform{
+        translation IS transmitter
+      }
+      Transform{
+        translation IS receiver
+      }
+    ]
+  }
+}
+
+PROTO CylinderSensorZ [
+    exposedField    SFFloat    maxAngle       -1
+    exposedField    SFFloat    minAngle        0
+    exposedField    MFNode     children        [ ]
+]
+{
+  Transform{
+    rotation 1 0 0 1.5708
+    children [
+      DEF SensorY CylinderSensor{
+        maxAngle IS maxAngle
+        minAngle IS minAngle
+      }
+      DEF AxisY Transform{
+        children [
+          Transform{
+            rotation 1 0 0 -1.5708
+            children IS children
+          }
+        ]
+      }
+    ]
+  }
+  ROUTE SensorY.rotation_changed TO AxisY.set_rotation
+}
+
+PROTO CylinderSensorY [
+    exposedField    SFFloat    maxAngle       -1
+    exposedField    SFFloat    minAngle        0
+    exposedField    MFNode     children        [ ]
+]
+{
+  Transform{
+    rotation 0 1 0 1.5708
+    children [
+      DEF SensorX CylinderSensor{
+        maxAngle IS maxAngle
+        minAngle IS minAngle
+      }
+      DEF AxisX Transform{
+        children [
+          Transform{
+            rotation 0 1 0 -1.5708
+            children IS children
+          }
+        ]
+      }
+    ]
+  }
+  ROUTE SensorX.rotation_changed TO AxisX.set_rotation
+}
+
+PROTO CylinderSensorX [
+    exposedField    SFFloat    maxAngle       -1
+    exposedField    SFFloat    minAngle        0
+    exposedField    MFNode     children        [ ]
+]
+{
+  Transform{
+    rotation 0 0 1 -1.5708
+    children [
+      DEF SensorZ CylinderSensor{
+        maxAngle IS maxAngle
+        minAngle IS minAngle
+      }
+      DEF AxisZ Transform{
+        children [
+          Transform{
+            rotation 0 0 1 1.5708
+            children IS children
+          }
+        ]
+      }
+    ]
+  }
+  ROUTE SensorZ.rotation_changed TO AxisZ.set_rotation
+}
+
+NavigationInfo {
+  avatarSize    0.5
+  headlight     TRUE
+  type  ["EXAMINE", "ANY"]
+}
+
+Background {
+  skyColor 0.4 0.6 0.4
+}
+
+Viewpoint {
+  position    3 0 0.835
+  orientation 0.5770 0.5775 0.5775 2.0935
+}
+
+
+
+DEF kobuki Humanoid {
+    humanoidBody [
+    DEF BODY Joint {
+      jointType "free"             # nakajima modify
+      translation 0.0 0.0 0.0102     # kobuki 駆動輪の中心の高さ
+      children [
+
+## BODY ##
+
+      DEF BODY_LINK Segment {
+	      mass 2.4                      # (kobuki)
+	      centerOfMass 0.0 0.002871 0.043454  # (kobuki) 
+	      momentsOfInertia [0.0001 0 0 0 0.0001 0 0 0 0.0001]   #[kobuki]重心で計算して、出力座標系と整列
+          children [
+			Inline {
+				url "parts/body/kobuki-body.wrl"
+			}
+          ]
+        }
+
+## LEFT WHEEL ##
+
+        DEF LEFT_WHEEL Joint {
+          jointType "pseudoContinuousTrack"                
+		  jointAxis 0 1 0               # nakajima modify
+          jointId 0                      # nakajima modify
+		  translation 0.0 0.115 0.025  # [kobuki]
+          children [
+            DEF LEFT_WHEEL_LINK Segment {
+	      	  mass 0.01        # (kobuki)
+		      centerOfMass 0 0 0  # [kobuki] 
+              momentsOfInertia [0.001 0 0 0 0.001 0 0 0 0.001] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+                Inline {
+                  url "parts/body/kobuki_wheel.wrl"
+                }
+              ]
+            }
+	  	  ]
+		} # end of LEFT_WHEEL
+
+## RIGHT WHEEL ##
+
+        DEF RIGHT_WHEEL Joint {
+          jointType "pseudoContinuousTrack"           
+		  jointAxis 0 1 0               # nakajima modify  
+          jointId 1                      # nakajima modify
+		  translation 0.0 -0.115 0.025  # [kobuki]
+          children [
+            DEF RIGHT_WHEEL_LINK Segment {
+	      	  mass 0.01        # (kobuki)
+		      centerOfMass 0 0 0  # [kobuki] 
+              momentsOfInertia [0.001 0 0 0 0.001 0 0 0 0.001] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+                Inline {
+                  url "parts/body/kobuki_wheel.wrl"
+                }
+              ]
+            }
+	  	  ]
+		} # end of MAIN_WHEEL2
+
+## FRONT WHEEL ##
+
+        DEF FRONT_WHEEL Joint {
+          jointType "rotate"
+	  jointAxis 0 0 1               # nakajima modify
+          jointId 2
+          translation  -0.115 0.0 0.0064  #kobuki 正しい位置
+          children [
+            DEF FRONT_WHEEL_LINK Segment {
+	      	  mass 0.01        # (kobuki)
+		      centerOfMass 0 0 0   # [kobuki] 
+              momentsOfInertia [0.001 0 0 0 0.001 0 0 0 0.001] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+                Inline {
+                  url "parts/body/kobuki_free_wheel.wrl"
+                }
+              ]
+            }
+          ]
+        } # end of FRONT_WHEEL
+
+## REAR WHEEL ##
+
+        DEF REAR_WHEEL Joint {
+          jointType "rotate"
+	  jointAxis 0 0 1               # nakajima modify
+          jointId 3
+          translation  0.115 0.0 0.0064  #kobuki 正しい位置
+          children [
+            DEF REAR_WHEEL_LINK Segment {
+	      	  mass 0.01        # (kobuki)
+		      centerOfMass 0 0 0   # [kobuki] 
+              momentsOfInertia [0.001 0 0 0 0.001 0 0 0 0.001] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+                Inline {
+                  url "parts/body/kobuki_free_wheel.wrl"
+                }
+              ]
+            }
+          ]
+        } # end of REAR_WHEEL
+
+## UNDER STICK1 ##
+
+        DEF UNDER_STICK1_LINK Segment {
+	  mass 0.015        # (kobuki)
+	  centerOfMass 0 0 0   # [kobuki] 
+          momentsOfInertia [0.00002195782 0 0 0 0.00002195782 0 0 0 0.000000265016] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+		  translation  0.08 0.082 0.103  # 正しい位置
+		  children[
+                Inline {
+                  url "parts/body/kobuki_under_stick.wrl"
+                    }
+		  ]
+		}
+              ]
+            }
+
+
+## UNDER STICK2 ##
+
+        DEF UNDER_STICK2_LINK Segment {
+	  mass 0.015        # (kobuki)
+          centerOfMass 0 0 0   # [kobuki] 
+          momentsOfInertia [0.00002195782 0 0 0 0.00002195782 0 0 0 0.000000265016]  #[kobuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+		  translation  0.08 -0.082 0.103  # 正しい位置
+		  children[
+                Inline {
+                  url "parts/body/kobuki_under_stick.wrl"
+                    }
+		  ]
+		}
+              ]
+            }
+
+
+## UNDER STICK3 ##
+
+        DEF UNDER_STICK3_LINK Segment {
+    	  mass 0.015        # (kobuki)
+          centerOfMass 0 0 0   # [RH2] 
+          momentsOfInertia [0.00002195782 0 0 0 0.00002195782 0 0 0 0.000000265016]  #[kobuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+	 	  translation  0.055 0.12 0.103  # 正しい位置
+                  children[
+		    Inline {
+                    url "parts/body/kobuki_under_stick.wrl"
+                    }
+		  ]
+		}
+              ]
+            }
+
+
+## UNDER STICK4 ##
+
+        DEF UNDER_STICK4_LINK Segment {
+     	  mass 0.015        # (kobuki)
+          centerOfMass 0 0 0   # [kobuki] 
+          momentsOfInertia [0.00002195782 0 0 0 0.00002195782 0 0 0 0.000000265016]  #[kobuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+		  translation  -0.055 0.12 0.103  # 正しい位置
+                    children[
+		    Inline {
+                    url "parts/body/kobuki_under_stick.wrl"
+                    }
+		  ]
+		}
+              ]
+            }
+
+
+## UNDER STICK5 ##
+
+        DEF UNDER_STICK5_LINK Segment {
+      	  mass 0.015        # (kobuki)
+          centerOfMass 0 0 0  # [kobuki] 
+          momentsOfInertia [0.00002195782 0 0 0 0.00002195782 0 0 0 0.000000265016] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+		  translation  0.055 -0.12 0.103  # 正しい位置
+		    children[                
+		      Inline {
+                      url "parts/body/kobuki_under_stick.wrl"
+                    }
+		  ]
+		}
+              ]
+            }
+
+
+## UNDER STICK6 ##
+
+        DEF UNDER_STICK6_LINK Segment {
+     	  mass 0.015        # (kobuki)
+          centerOfMass 0 0 0  # [kobuki] 
+          momentsOfInertia [0.00002195782 0 0 0 0.00002195782 0 0 0 0.000000265016] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+		  translation  -0.055 -0.12 0.103  # 正しい位置
+		  children[
+                    Inline {
+                    url "parts/body/kobuki_under_stick.wrl"
+		    }
+		  ]
+                }
+              ]
+            }
+
+
+## UNDER PLATE ##
+
+        DEF UNDER_PLATE_LINK Segment {
+     	  mass 0.395        # (kobuki)
+	  centerOfMass 0 0.01778 0  # [kobuki] 
+          momentsOfInertia [0.001978018156 0.000000000244 -0.000000078318 0.000000000244 0.002839231818 -0.000000159132 -0.000000078318 -0.000000159132 0.004814879952] #[konuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+		  translation  0.0 0.0 0.1256  # 正しい位置
+		  children[
+                    Inline {
+                    url "parts/body/kobuki_under_plate.wrl"
+		    }
+		  ]
+                }
+              ]
+            }
+	    
+
+## MIDDLE STICK1 ##
+
+        DEF MIDDLE_STICK1_LINK Segment {
+          mass 0.015        # (kobuki)
+       	  centerOfMass 0 0 0  # [kobuki] 
+          momentsOfInertia [0.000003522933 0 0 0 0.000003522933 0 0 0 0.000000266137] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+		  translation  0.0375 0.1314 0.154  # 正しい位置
+		  children[
+                    Inline {
+                    url "parts/body/kobuki_middle_stick.wrl"
+		    }
+		  ]
+                }
+              ]
+            }
+
+
+## MIDDLE STICK2 ##
+
+        DEF MIDDLE_STICK2_LINK Segment {
+   	  mass 0.015        # (kobuki)
+          centerOfMass 0 0 0  # [kobuki] 
+          momentsOfInertia [0.000003522933 0 0 0 0.000003522933 0 0 0 0.000000266137] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+		  translation  0.0375 -0.1314 0.154  # 正しい位置
+		  children[
+                    Inline {
+                    url "parts/body/kobuki_middle_stick.wrl"
+		    }
+		  ]
+                }
+              ]
+            }
+
+
+## MIDDLE STICK3 ##
+
+        DEF MIDDLE_STICK3_LINK Segment {
+    	  mass 0.015        # (kobuki)
+          centerOfMass 0 0 0  # [kobuki] 
+          momentsOfInertia [0.000003522933 0 0 0 0.000003522933 0 0 0 0.000000266137] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+		  translation  -0.0375 0.1314 0.154  # 正しい位置
+                  children[
+		    Inline {
+                    url "parts/body/kobuki_middle_stick.wrl"
+		    }
+		  ]
+		}
+              ]
+            }
+
+
+## MIDDLE STICK4 ##
+
+        DEF MIDDLE_STICK4_LINK Segment {
+	  mass 0.015        # (kobuki)
+	  centerOfMass 0 0 0  # [kobuki] 
+          momentsOfInertia [0.000003522933 0 0 0 0.000003522933 0 0 0 0.000000266137] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+		  translation  -0.0375 -0.1314 0.154  # 正しい位置
+		  children[
+                    Inline {
+                    url "parts/body/kobuki_middle_stick.wrl"
+		    }
+		  ]
+                }
+              ]
+            }
+
+
+## MIDDLE PLATE ##
+
+        DEF MIDDLE_PLATE_LINK Segment {
+     	  mass 0.420        # (kobuki)
+          centerOfMass 0 -0.007125 0  # [kobuki] 
+          momentsOfInertia [0.002378198656 0 0 0 0.002947780636 0 0 0 0.005323459395] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+	 	  translation  0.0 0.0 0.1824  # 正しい位置
+		  children[
+                    Inline {
+                    url "parts/body/kobuki_top_plate.wrl"
+		    }
+		  ]
+                }
+              ]
+            }
+
+
+## TOP STICK1 ##
+
+        DEF TOP_STICK1_LINK Segment {
+	  mass 0.06        # (kobuki)
+	  centerOfMass 0 0 0  # [kobuki] 
+          momentsOfInertia [0.0002069912 0 0 0 0.0002069912 0 0 0 0.00000108] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+		  translation  0.0375 0.1314 0.287  # 正しい位置
+		  children[
+                    Inline {
+                    url "parts/body/kobuki_top_stick.wrl"
+		    }
+		  ]
+                }
+              ]
+            }
+
+
+## TOP STICK2 ##
+
+        DEF TOP_STICK2_LINK Segment {
+	  mass 0.06        # (kobuki)
+	  centerOfMass 0 0 0  # [kobuki] 
+          momentsOfInertia [0.0002069912 0 0 0 0.0002069912 0 0 0 0.00000108] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+		  translation  0.0375 -0.1314 0.287  # 正しい位置
+		  children[
+                    Inline {
+                    url "parts/body/kobuki_top_stick.wrl"
+		    }
+		  ]
+                }
+              ]
+            }
+
+
+## TOP STICK3 ##
+
+        DEF TOP_STICK3_LINK Segment {
+	  mass 0.06        # (kobuki)
+	  centerOfMass 0 0 0  # [kobuki] 
+          momentsOfInertia [0.0002069912 0 0 0 0.0002069912 0 0 0 0.00000108] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+	          translation  -0.0375 0.1314 0.287  # 正しい位置
+		  children[
+                    Inline {
+                    url "parts/body/kobuki_top_stick.wrl"
+		    }
+		  ]
+                }
+              ]
+            }
+
+
+## TOP STICK4 ##
+
+        DEF TOP_STICK4_LINK Segment {
+	  mass 0.06        # (kobuki)
+	  centerOfMass 0 0 0  # [kobuki] 
+          momentsOfInertia [0.0002069912 0 0 0 0.0002069912 0 0 0 0.00000108] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+	 	  translation  -0.0375 -0.1314 0.287  # 正しい位置
+		  children[
+		    Inline {
+                    url "parts/body/kobuki_top_stick.wrl"
+		    }
+		  ]
+                }
+              ]
+            }
+
+
+## TOP PLATE ##
+
+        DEF TOP_PLATE_LINK Segment {
+	  mass 0.42        # (kobuki)
+	  centerOfMass 0 -0.007125 0  # [kobuki] 
+          momentsOfInertia [0.002378198656 0 0 0 0.002947780636 0 0 0 0.005323459395] #[kobuki]重心で計算して、出力座標系と整列
+              children [
+	        Transform{
+		  translation  0.0 0.0 0.3916  # 正しい位置
+		  children[
+                    Inline {
+                    url "parts/body/kobuki_top_plate.wrl"
+		    }
+		  ]
+                }
+              ]
+            }
+
+
+# ------------------------- Obstacle Sensor ------------------------- #
+# MEMO 床面からセンサーまでの高さ : 0.1854m
+
+
+
+		############# OBSTACLE_SENSOR ##############
+	DEF OBSTACLE_SENSOR Joint {
+	 jointType "fixed"
+		translation   0.0 0.0 0.1854 
+#		rotation 0 0 -1 1.5707963267948966		
+		children [
+			DEF OBSTACLE_SENSOR_LINK Segment {
+				mass 0.005
+				centerOfMass 0.0 0.0 0.0
+				momentsOfInertia [ 0.1 0 0 0 0.1 0 0 0 0.1 ]
+				children [
+					Inline {
+
+						url "parts/sensor/TOP-URG_Sensor.wrl"
+					}
+				]
+			}
+
+
+				
+		############# RangeSensor ##############
+	DEF URG_SENSOR RangeSensor {
+	 translation   0.03 0.0 0.06
+         rotation 0.5773502692 -0.5773502692 -0.5773502692 2.09439510239
+				
+	### [TOP-URG] ###
+	 scanAngle     1.5707963267948966		#[rad] = 270deg
+	 scanStep      0.011344640137963142		#[rad] = 0.25deg
+	 scanRate      100	#[Hz] =25ms
+	 minDistance   0.1
+	 maxDistance   30.0					#[m] max 30m
+			
+	 sensorId      0
+	} # end of sensor
+
+
+#	 DEF CEILING_CAMERA VisionSensor {
+#          sensorId 1
+#          translation 0.023 0.0 0.06
+#          rotation 0.5773502692 -0.5773502692 -0.5773502692 2.09439510239
+#          fieldOfView 1.04 
+#          backClipDistance 6 
+#          frameRate 15.0 
+#          type "COLOR_DEPTH"
+#          name "CEILING_CAMERA"
+#          children[
+#            Transform {
+#              children[
+#                Shape{
+#                  geometry Box{
+#                    size 0.04 0.03 0.03
+#                  }
+#                  appearance Appearance{
+#                    material Material{
+#                      diffuseColor 0.2 0.2 0.2
+#                    }
+#                  }
+#                }
+#              ]
+#            }
+#          ]
+#        }
+
+
+	  ] # end of children (OBSTACLE_SENSOR)
+	} # end of Joint (OBSTACLE_SENSOR)
+
+
+		
+
+# ------------------------- Obstacle Sensor end ------------------------- #
+
+
+
+
+      ]
+    } # end of joint BODY
+  ]
+  joints [
+    USE BODY,
+    USE LEFT_WHEEL,
+    USE RIGHT_WHEEL,
+    USE FRONT_WHEEL,
+    USE REAR_WHEEL,
+    USE OBSTACLE_SENSOR
+  ]
+  segments [
+    USE BODY_LINK,  
+    USE LEFT_WHEEL_LINK,
+    USE RIGHT_WHEEL_LINK,
+    USE FRONT_WHEEL_LINK,
+    USE REAR_WHEEL_LINK,
+    USE UNDER_STICK1_LINK,
+    USE UNDER_STICK2_LINK,
+    USE UNDER_STICK3_LINK,
+    USE UNDER_STICK4_LINK,
+    USE UNDER_STICK5_LINK,
+    USE UNDER_STICK6_LINK,
+    USE UNDER_PLATE_LINK,
+    USE MIDDLE_STICK1_LINK,
+    USE MIDDLE_STICK2_LINK,
+    USE MIDDLE_STICK3_LINK,
+    USE MIDDLE_STICK4_LINK,
+    USE UNDER_PLATE_LINK,
+    USE TOP_STICK1_LINK,
+    USE TOP_STICK2_LINK,
+    USE TOP_STICK3_LINK,
+    USE TOP_STICK4_LINK,
+    USE TOP_PLATE_LINK,
+    USE OBSTACLE_SENSOR_LINK
+  ]
+}
