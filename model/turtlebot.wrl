@@ -731,6 +731,7 @@ DEF Turtlebot Humanoid {
           llimit -1e+16
           uvlimit 1e+16
           lvlimit -1e+16
+          rotorInertia 0.01
           children [
             DEF wheel_left_link Segment {
               mass 0.01
@@ -781,6 +782,7 @@ DEF Turtlebot Humanoid {
           llimit -1e+16
           uvlimit 1e+16
           lvlimit -1e+16
+          rotorInertia 0.01
           children [
             DEF wheel_right_link Segment {
               mass 0.01
