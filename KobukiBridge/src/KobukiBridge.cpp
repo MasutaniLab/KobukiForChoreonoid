@@ -133,7 +133,7 @@ RTC::ReturnCode_t KobukiBridge::onActivated(RTC::UniqueId ec_id)
   m_q = 0;
   m_prevTime = 0;
   m_wheelTorque.data.length(2);
-  m_wheelVelocity.data.length(2);
+  m_bumper.data.length(3);
   m_iR = 0;
   m_iL = 0;
   m_wheelFirst = true;
@@ -210,8 +210,14 @@ RTC::ReturnCode_t KobukiBridge::onExecute(RTC::UniqueId ec_id)
       m_currentPose.data.heading = normalizeAngle(m_q);
       m_currentPoseOut.write();
       //バンパセンサ
-      double fx = m_sumFx/m_sumC;
-      double fy = m_sumFy/m_sumC;
+      double fx, fy;
+      if (m_sumC == 0) {
+        fx = 0;
+        fy = 0;
+      } else {
+        fx = m_sumFx/m_sumC;
+        fy = m_sumFy/m_sumC;
+      }
       //cout << "fx: " << fx << "  fy: " << fy << endl;
       double a = sqrt(fx*fx+fy*fy);
       m_bumper.data[0] = false;
