@@ -261,7 +261,7 @@ views:
     class: ItemTreeView
     mounted: true
     state: 
-      selected: [ 10 ]
+      selected: [ 3 ]
       checked: [ 1, 2, 4, 5, 6, 7, 8, 9, 11 ]
       expanded: [ 1, 2, 8 ]
   - 
@@ -369,6 +369,18 @@ toolbars:
     speedScale: 1
     syncToOngoingUpdates: true
     autoExpansion: true
+  "KinematicsBar": 
+    mode: AUTO
+    enablePositionDragger: true
+    penetrationBlock: false
+    collisionLinkHighlight: false
+    snapDistance: 0.025
+    penetrationBlockDepth: 0.0005
+    lazyCollisionDetectionMode: true
+  "LeggedBodyBar": 
+    stanceWidth: 0.15
+  "BodyBar": 
+    current: 9
   "BodyMotionGenerationBar": 
     autoGenerationForNewBody: true
     balancer: false
@@ -402,18 +414,6 @@ toolbars:
     waistHeightRelaxation: false
     gravity: 9.8
     dynamicsTimeRatio: 1
-  "KinematicsBar": 
-    mode: AUTO
-    enablePositionDragger: true
-    penetrationBlock: false
-    collisionLinkHighlight: false
-    snapDistance: 0.025
-    penetrationBlockDepth: 0.0005
-    lazyCollisionDetectionMode: true
-  "BodyBar": 
-    current: 9
-  "LeggedBodyBar": 
-    stanceWidth: 0.15
 Body: 
   "BodyMotionEngine": 
     updateJointVelocities: false
@@ -478,12 +478,12 @@ viewAreas:
     contents: 
       type: splitter
       orientation: horizontal
-      sizes: [ 335, 1580 ]
+      sizes: [ 511, 1402 ]
       children: 
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 453, 452 ]
+          sizes: [ 475, 473 ]
           children: 
             - 
               type: pane
@@ -496,12 +496,12 @@ viewAreas:
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 646, 259 ]
+          sizes: [ 677, 271 ]
           children: 
             - 
               type: splitter
               orientation: horizontal
-              sizes: [ 697, 878 ]
+              sizes: [ 617, 778 ]
               children: 
                 - 
                   type: pane
