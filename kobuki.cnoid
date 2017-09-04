@@ -46,7 +46,7 @@ items:
               data: 
                 isImmediateMode: true
                 controllerOptions: ""
-                moduleName: "${PROJECT_DIR}/KobukiBridge/build/src/Release/KobukiBridge.dll"
+                moduleName: ""
                 confFileName: "${PROJECT_DIR}/turtlebot.conf"
                 configurationMode: "Use Configuration File"
                 AutoConnect: false
@@ -169,6 +169,7 @@ views:
     class: ItemTreeView
     mounted: true
     state: 
+      selected: [ 3 ]
       checked: [ 1, 2, 4, 5, 7 ]
       expanded: [ 1, 2 ]
   - 
@@ -274,8 +275,6 @@ toolbars:
     speedScale: 1
     syncToOngoingUpdates: true
     autoExpansion: true
-  "LeggedBodyBar": 
-    stanceWidth: 0.15
   "KinematicsBar": 
     mode: AUTO
     enablePositionDragger: true
@@ -284,6 +283,8 @@ toolbars:
     snapDistance: 0.025
     penetrationBlockDepth: 0.0005
     lazyCollisionDetectionMode: true
+  "LeggedBodyBar": 
+    stanceWidth: 0.15
   "BodyMotionGenerationBar": 
     autoGenerationForNewBody: true
     balancer: false
@@ -361,12 +362,12 @@ viewAreas:
     contents: 
       type: splitter
       orientation: horizontal
-      sizes: [ 511, 1402 ]
+      sizes: [ 512, 1403 ]
       children: 
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 475, 473 ]
+          sizes: [ 453, 452 ]
           children: 
             - 
               type: pane
@@ -379,12 +380,12 @@ viewAreas:
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 677, 271 ]
+          sizes: [ 646, 259 ]
           children: 
             - 
               type: splitter
               orientation: horizontal
-              sizes: [ 617, 778 ]
+              sizes: [ 618, 780 ]
               children: 
                 - 
                   type: pane

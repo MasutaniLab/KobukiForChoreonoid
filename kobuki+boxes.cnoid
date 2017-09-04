@@ -21,12 +21,12 @@ items:
           data: 
             modelFile: "${PROJECT_DIR}/model/turtlebot.wrl"
             currentBaseLink: "base_footprint"
-            rootPosition: [ 0, 0, 0 ]
+            rootPosition: [ 0.00051228151, -1.17356272e-006, -0.00049543028 ]
             rootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
-            jointPositions: [  0.000000,  0.000000 ]
+              0.999866445, 8.29215169e-005, -0.0163427588, 
+              -8.28963444e-005, 0.999999997, 2.21770648e-006, 
+              0.0163427589, -8.62655331e-007, 0.999866448 ]
+            jointPositions: [  0.015372,  0.016531 ]
             initialRootPosition: [ 0, 0, 0 ]
             initialRootAttitude: [ 
               1, 0, 0, 
@@ -46,7 +46,7 @@ items:
               data: 
                 isImmediateMode: true
                 controllerOptions: ""
-                moduleName: "${PROJECT_DIR}/KobukiBridge/build/src/Release/KobukiBridge.dll"
+                moduleName: ""
                 confFileName: "${PROJECT_DIR}/turtlebot.conf"
                 configurationMode: "Use Configuration File"
                 AutoConnect: false
@@ -107,11 +107,11 @@ items:
           data: 
             modelFile: "${PROJECT_DIR}/box.wrl"
             currentBaseLink: "freeJoint"
-            rootPosition: [ 0.01, 0.7, 0 ]
+            rootPosition: [ 0.0100000027, 0.699999999, -0.000498696026 ]
             rootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
+              1, -8.32103818e-010, 5.80890141e-007, 
+              8.30553171e-010, 1, 2.66943302e-006, 
+              -5.80890143e-007, -2.66943302e-006, 1 ]
             jointPositions: [  ]
             initialRootPosition: [ 0.01, 0.7, 0 ]
             initialRootAttitude: [ 
@@ -130,11 +130,11 @@ items:
           data: 
             modelFile: "${PROJECT_DIR}/box.wrl"
             currentBaseLink: "freeJoint"
-            rootPosition: [ 1, 1.5, 0 ]
+            rootPosition: [ 0.999999984, 1.50000002, -0.000497177367 ]
             rootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
+              1, 5.6185748e-008, 2.85492967e-006, 
+              -5.61961556e-008, 1, 3.64548957e-006, 
+              -2.85492947e-006, -3.64548973e-006, 1 ]
             jointPositions: [  ]
             initialRootPosition: [ 1, 1.5, 0 ]
             initialRootAttitude: [ 
@@ -153,11 +153,11 @@ items:
           data: 
             modelFile: "${PROJECT_DIR}/box.wrl"
             currentBaseLink: "freeJoint"
-            rootPosition: [ -0.2, 2.3, 0 ]
+            rootPosition: [ -0.200000009, 2.29999997, -0.000498716103 ]
             rootAttitude: [ 
-              0.707106781, 0.707106781, 0, 
-              -0.707106781, 0.707106781, 0, 
-              0, 0, 1 ]
+              0.707106817, 0.707106746, 2.26004598e-006, 
+              -0.707106746, 0.707106817, 1.43502126e-006, 
+              -5.83380709e-007, -2.61280707e-006, 1 ]
             jointPositions: [  ]
             initialRootPosition: [ -0.2, 2.3, 0 ]
             initialRootAttitude: [ 
@@ -176,11 +176,11 @@ items:
           data: 
             modelFile: "${PROJECT_DIR}/box.wrl"
             currentBaseLink: "freeJoint"
-            rootPosition: [ 1.6, 0.4, 0 ]
+            rootPosition: [ 1.60000005, 0.399999978, -0.000498719199 ]
             rootAttitude: [ 
-              0.866025404, -0.5, 0, 
-              0.5, 0.866025404, 0, 
-              0, 0, 1 ]
+              0.86602537, -0.500000058, -7.84313587e-007, 
+              0.500000058, 0.86602537, 2.54176704e-006, 
+              -5.91648204e-007, -2.59339158e-006, 1 ]
             jointPositions: [  ]
             initialRootPosition: [ 1.6, 0.4, 0 ]
             initialRootAttitude: [ 
@@ -261,9 +261,9 @@ views:
     class: ItemTreeView
     mounted: true
     state: 
-      selected: [ 3 ]
+      selected: [ 3, 10 ]
       checked: [ 1, 2, 4, 5, 6, 7, 8, 9, 11 ]
-      expanded: [ 1, 2, 8 ]
+      expanded: [ 1, 2, 3, 6, 7, 8, 9 ]
   - 
     id: 3
     plugin: Base
@@ -365,7 +365,7 @@ toolbars:
     frameRate: 100
     playbackFrameRate: 50
     idleLoopDrivenMode: false
-    currentTime: 0
+    currentTime: 10.84
     speedScale: 1
     syncToOngoingUpdates: true
     autoExpansion: true
@@ -377,10 +377,10 @@ toolbars:
     snapDistance: 0.025
     penetrationBlockDepth: 0.0005
     lazyCollisionDetectionMode: true
-  "LeggedBodyBar": 
-    stanceWidth: 0.15
   "BodyBar": 
     current: 9
+  "LeggedBodyBar": 
+    stanceWidth: 0.15
   "BodyMotionGenerationBar": 
     autoGenerationForNewBody: true
     balancer: false
@@ -478,12 +478,12 @@ viewAreas:
     contents: 
       type: splitter
       orientation: horizontal
-      sizes: [ 511, 1402 ]
+      sizes: [ 512, 1403 ]
       children: 
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 475, 473 ]
+          sizes: [ 453, 452 ]
           children: 
             - 
               type: pane
@@ -496,12 +496,12 @@ viewAreas:
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 677, 271 ]
+          sizes: [ 646, 259 ]
           children: 
             - 
               type: splitter
               orientation: horizontal
-              sizes: [ 617, 778 ]
+              sizes: [ 618, 780 ]
               children: 
                 - 
                   type: pane
