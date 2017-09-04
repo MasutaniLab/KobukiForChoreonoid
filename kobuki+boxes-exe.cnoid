@@ -46,8 +46,8 @@ items:
               data: 
                 isImmediateMode: true
                 controllerOptions: ""
-                moduleName: "${PROJECT_DIR}/KobukiBridge/build/src/Release/KobukiBridge.dll"
-                confFileName: "${PROJECT_DIR}/turtlebot.conf"
+                moduleName: ""
+                confFileName: "${PROJECT_DIR}/turtlebot-exe.conf"
                 configurationMode: "Use Configuration File"
                 AutoConnect: false
                 InstanceName: "Turtlebot"
@@ -377,10 +377,10 @@ toolbars:
     snapDistance: 0.025
     penetrationBlockDepth: 0.0005
     lazyCollisionDetectionMode: true
-  "BodyBar": 
-    current: 9
   "LeggedBodyBar": 
     stanceWidth: 0.15
+  "BodyBar": 
+    current: 9
   "BodyMotionGenerationBar": 
     autoGenerationForNewBody: true
     balancer: false
