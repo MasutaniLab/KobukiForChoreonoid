@@ -46,7 +46,7 @@ items:
               data: 
                 isImmediateMode: true
                 controllerOptions: ""
-                moduleName: ""
+                moduleName: "${PROJECT_DIR}/KobukiBridge/build/module/KobukiBridge"
                 confFileName: "${PROJECT_DIR}/turtlebot.conf"
                 configurationMode: "Use Configuration File"
                 AutoConnect: false
