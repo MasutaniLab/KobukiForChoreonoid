@@ -12,7 +12,7 @@
   - Visual Studio 2012
   - OpenRTM-aist 1.1.2 64bit版
   - Choreonoid 1.5
-- - VRMLモデルは，[ROSのTurtlebotのURDF](http://wiki.ros.org/turtlebot_description)を[simtrans](http://fkanehiro.github.io/simtrans/html-ja/index.html)でVRMLに変換したものを改変して使っています．力覚センサを使って，バンパセンサを模擬しています．
+  - VRMLモデルは，[ROSのTurtlebotのURDF](http://wiki.ros.org/turtlebot_description)を[simtrans](http://fkanehiro.github.io/simtrans/html-ja/index.html)でVRMLに変換したものを改変して使っています．力覚センサを使って，バンパセンサを模擬しています．
 - ChoreonoidのボディRTCのコントローラモジュールとして使うRTコンポーネント（KobukiBridge）は独自に作成したものです．ポートの仕様は，[KobukiRTC](https://github.com/rt-net/kobuki_rtc)と互換になるようにしています．
 - 以上を利用するChorenoidのプロジェクトファイルも同梱しています．
 
