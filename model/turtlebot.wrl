@@ -216,7 +216,7 @@ DEF Turtlebot Humanoid {
                     }
                   ]
                 }
-		# Kinect視覚形状
+		            # Kinect視覚形状
                 # Transform {
                 #   scale 1.0 1.0 1.0
                 #   translation -0.118 0.0 0.2812
@@ -317,7 +317,7 @@ DEF Turtlebot Humanoid {
                     }
                   ]
                 }
-		# Kinect用ポール 視覚形状
+		            # Kinect用ポール 視覚形状
                 # Transform {
                 #   scale 1.0 1.0 1.0
                 #   translation -0.1024 0.098 0.2374
@@ -433,7 +433,7 @@ DEF Turtlebot Humanoid {
                     }
                   ]
                 }
-		# Kinect干渉形状
+		            # Kinect干渉形状
                 # Transform {
                 #   scale 1.0 1.0 1.0
                 #   translation -0.118 0.0 0.2812
@@ -601,7 +601,7 @@ DEF Turtlebot Humanoid {
                     }
                   ]
                 }
-		# Kinect用ポール 干渉形状
+		            # Kinect用ポール 干渉形状
                 # Transform {
                 #   scale 1.0 1.0 1.0
                 #   translation -0.1024 0.098 0.2474
