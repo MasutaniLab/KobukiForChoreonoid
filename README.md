@@ -73,7 +73,7 @@
     - bumper
       - 型: RTC::TimedBooleanSeq
       - 概要： バンパの状態（長さ3）
-- `KobukiBridge`のコンポーネントの仕様は，アールティ社が公開している[KobukiRTCl
+- `KobukiBridge`のコンポーネントの仕様は，アールティ社が公開している[KobukiRTC
 ](https://github.com/rt-net/kobuki_rtc)と互換になるようにしています．
 
 ## 既知の問題・TODO
