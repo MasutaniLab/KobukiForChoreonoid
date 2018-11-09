@@ -1,0 +1,132 @@
+format: ChoreonoidBody
+formatVersion: 1.0
+angleUnit: degree
+name: Turtlebot
+
+links:
+  -
+    name: base_footprint
+    jointType: free
+    translation: [ 0.0, 0.0, 0.0 ]
+    mass: 4.9213
+    centerOfMass: [-0.00949586, 1.25983e-05, 0.135573]
+    inertia: [
+      0.142129, -4.09257e-06, 0.0154899,
+      -4.09257e-06, 0.140784, 6.52071e-06,
+      0.0154899, 6.52071e-06, 0.0801071]
+    elements:
+      -
+        type: Visual
+        elements:
+          - 
+            type: Transform
+            translation: [0.001, 0.0, 0.06219]
+            rotation: [0, 1, 0, 0]
+            elements:
+              Resource:
+                uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_base_link.wrl"
+          - 
+            type: Transform
+            translation: [0.02364, 0.0, 0.1408]
+            rotation: [0, 1, 0, 0]
+            elements:
+              Resource:
+                uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_plate_bottom_link.wrl"
+      -
+        type: Collision
+        elements:
+          -
+            type: Transform
+            translation: [0.0, 0.0, 0.06969]
+            rotation: [1.0, 0.0, 0.0, 90]
+            Shape:
+              geometry:
+                type: Cylinder
+                radius: 0.178
+                height: 0.10938
+          -
+            type: Transform
+            translation: [-0.135, 0.0, 0.0192]
+            rotation: [0, 1, 0, 0]
+            Shape:
+              geometry:
+                type: Cylinder
+                radius: 0.017
+                height: 0.001
+              appearance:
+                material:
+                  diffuseColor: [0, 0, 1]
+  -
+    name: wheel_left_link
+    parent: base_footprint
+    jointType: revolute
+    jointAxis: [0, 1, 0]
+    translation: [0.0, 0.115, 0.0352]
+    mass: 0.01
+    inertia: [
+      0.001, 0.0, 0.0,
+      0.0, 0.001, 0.0,
+      0.0, 0.0, 0.001]
+    elements:
+      -
+        type: Visual
+        elements:
+          - 
+            type: Transform
+            translation: [0.0, 0.0, 0.0]
+            rotation: [0, 1, 0, 0]
+            elements:
+              Resource:
+                uri: "turtlebot-wheel_left_link-turtlebot-wheel_left_link_visual.wrl"
+      -
+        type: Collision
+        elements:
+          -
+            type: Transform
+            translation: [0.0, 0.0, 0.0]
+            rotation: [1.0, 0.0, 0.0, 90]
+            Shape:
+              geometry:
+                type: Cylinder
+                radius: 0.0352
+                height: 0.0206
+              appearance:
+                material:
+                  diffuseColor: [1, 0, 0]
+  -
+    name: wheel_right_link
+    parent: base_footprint
+    jointType: revolute
+    jointAxis: [0, 1, 0]
+    translation: [0.0, -0.115, 0.0352]
+    mass: 0.01
+    inertia: [
+      0.001, 0.0, 0.0,
+      0.0, 0.001, 0.0,
+      0.0, 0.0, 0.001]
+    elements:
+      -
+        type: Visual
+        elements:
+          - 
+            type: Transform
+            translation: [0.0, 0.0, 0.0]
+            rotation: [0, 1, 0, 0]
+            elements:
+              Resource:
+                uri: "turtlebot-wheel_right_link-turtlebot-wheel_right_link_visual.wrl"
+      -
+        type: Collision
+        elements:
+          -
+            type: Transform
+            translation: [0.0, 0.0, 0.0]
+            rotation: [1.0, 0.0, 0.0, 90]
+            Shape:
+              geometry:
+                type: Cylinder
+                radius: 0.0352
+                height: 0.0206
+              appearance:
+                material:
+                  diffuseColor: [1, 0, 0]
