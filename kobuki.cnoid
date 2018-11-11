@@ -12,6 +12,7 @@ items:
       data: 
         collisionDetection: false
         collisionDetector: AISTCollisionDetector
+        materialTableFile: "${SHARE}/default/materials.yaml"
       children: 
         - 
           id: 2
@@ -19,14 +20,14 @@ items:
           plugin: Body
           class: BodyItem
           data: 
-            modelFile: "${PROJECT_DIR}/model/turtlebot.wrl"
+            modelFile: "${PROJECT_DIR}/model/turtlebot.body"
             currentBaseLink: "base_footprint"
             rootPosition: [ 0, 0, 0 ]
             rootAttitude: [ 
               1, 0, 0, 
               0, 1, 0, 
               0, 0, 1 ]
-            jointPositions: [  0.000000,  0.000000 ]
+            jointPositions: [ -6.470488,  6.810903 ]
             initialRootPosition: [ 0, 0, 0 ]
             initialRootAttitude: [ 
               1, 0, 0, 
@@ -40,27 +41,24 @@ items:
           children: 
             - 
               id: 3
-              name: "BodyRTC"
+              name: "BodyIoRTC"
               plugin: OpenRTM
-              class: BodyRTCItem
+              class: BodyIoRTCItem
               data: 
-                isImmediateMode: true
+                isNoDelayMode: false
                 controllerOptions: ""
-                moduleName: "${PROJECT_DIR}/KobukiBridge/build/module/KobukiBridge"
-                confFileName: "${PROJECT_DIR}/turtlebot.conf"
-                configurationMode: "Use Configuration File"
-                AutoConnect: false
-                InstanceName: "Turtlebot"
-                bodyPeriodicRate: 0
-                RelativePathBase: "Project directory"
+                module: "${PROJECT_DIR}/KobukiIoRTC/build/rtc/KobukiIoRTC"
+                baseDirectory: "Project directory"
+                instanceName: ""
+                periodicRate: 0
         - 
           id: 4
           name: "Floor"
           plugin: Body
           class: BodyItem
           data: 
-            modelFile: "${PROJECT_DIR}/green-floor.wrl"
-            currentBaseLink: "BASE"
+            modelFile: "${PROJECT_DIR}/green-floor.body"
+            currentBaseLink: "Floor"
             rootPosition: [ 0, 0, -0.1 ]
             rootAttitude: [ 
               1, 0, 0, 
@@ -78,12 +76,12 @@ items:
             isEditable: false
         - 
           id: 5
-          name: "wall"
+          name: "Wall"
           plugin: Body
           class: BodyItem
           data: 
-            modelFile: "${PROJECT_DIR}/wall.wrl"
-            currentBaseLink: "Root"
+            modelFile: "${PROJECT_DIR}/wall.body"
+            currentBaseLink: "Wall"
             rootPosition: [ 0, 0, 0 ]
             rootAttitude: [ 
               1, 0, 0, 
@@ -118,7 +116,7 @@ items:
             integrationMode: "Runge Kutta"
             gravity: [ 0, 0, -9.80665 ]
             staticFriction: 0.5
-            slipFriction: 0.5
+            dynamicFriction: 0.5
             cullingThresh: 0.005
             contactCullingDepth: 0.05
             errorCriterion: 0.001
@@ -130,12 +128,12 @@ items:
             oldAccelSensorMode: false
     - 
       id: 7
-      name: "marks"
+      name: "Marks"
       plugin: Body
       class: BodyItem
       data: 
-        modelFile: "${PROJECT_DIR}/marks.wrl"
-        currentBaseLink: "Root"
+        modelFile: "${PROJECT_DIR}/marks.body"
+        currentBaseLink: "Marks"
         rootPosition: [ 0, 0, 0 ]
         rootAttitude: [ 
           1, 0, 0, 
@@ -151,13 +149,23 @@ items:
         collisionDetection: true
         selfCollisionDetection: false
         isEditable: false
+    - 
+      id: 8
+      name: "RTSystem"
+      plugin: OpenRTM
+      class: RTSystemItem
+      data: 
+        filename: "${PROJECT_DIR}/RTSystem.xml"
+        format: RTS-PROFILE-XML
+        autoConnection: true
+        pollingCycle: 1000
+        stateCheck: Polling
+        checkAtLoading: true
 views: 
   - 
     id: 0
-    name: "CameraImage"
     plugin: Base
-    class: ImageView
-    mounted: true
+    class: GeneralSliderView
   - 
     id: 1
     plugin: Base
@@ -169,9 +177,8 @@ views:
     class: ItemTreeView
     mounted: true
     state: 
-      selected: [ 3 ]
       checked: [ 1, 2, 4, 5, 7 ]
-      expanded: [ 1, 2 ]
+      expanded: [ 1, 2, 3 ]
   - 
     id: 3
     plugin: Base
@@ -187,6 +194,7 @@ views:
       viewpointControlMode: thirdPerson
       collisionLines: false
       polygonMode: fill
+      cullingMode: enabled
       defaultHeadLight: true
       defaultHeadLightIntensity: 0.75
       headLightLightingFromBack: false
@@ -209,9 +217,11 @@ views:
       normalVisualization: false
       normalLength: 0.01
       coordinateAxes: true
+      fpsTestIteration: 1
       showFPS: false
       enableNewDisplayListDoubleRendering: false
       useBufferForPicking: true
+      upsideDown: false
       cameras: 
         - 
           camera: [ System, Perspective ]
@@ -252,6 +262,7 @@ views:
       spinBox: true
       slider: true
       labelOnLeft: true
+      currentBodyItem: 5
   - 
     id: 7
     plugin: Body
@@ -259,19 +270,39 @@ views:
     mounted: true
     state: 
       listingMode: "Link List"
+      currentBodyItem: 5
   - 
     id: 8
+    name: "RTC Diagram"
+    plugin: OpenRTM
+    class: RTSDiagramView
+    mounted: true
+    state: 
+      currentRTSItem: 8
+  - 
+    id: 9
+    plugin: OpenRTM
+    class: RTSNameServerView
+    mounted: true
+    state: 
+      NameServers: 
+        - 
+          isDefaultNameServer: false
+          host: "localhost"
+          port: 2809
+  - 
+    id: 10
     plugin: Python
     class: PythonConsoleView
     mounted: true
 toolbars: 
   "TimeBar": 
     minTime: 0
-    maxTime: 30
+    maxTime: 97.99
     frameRate: 100
     playbackFrameRate: 50
     idleLoopDrivenMode: false
-    currentTime: 0
+    currentTime: 48.23
     speedScale: 1
     syncToOngoingUpdates: true
     autoExpansion: true
@@ -283,6 +314,8 @@ toolbars:
     snapDistance: 0.025
     penetrationBlockDepth: 0.0005
     lazyCollisionDetectionMode: true
+  "BodyBar": 
+    current: 5
   "LeggedBodyBar": 
     stanceWidth: 0.15
   "BodyMotionGenerationBar": 
@@ -353,6 +386,11 @@ Body:
     targetJoints: all
     checkSelfCollisions: true
     onlyTimeBarRange: false
+  "SplineFilterDialog": 
+    isInputFrameRateSpecified: false
+    inputFrameRate: 200
+    isOutputFrameRateSpecified: false
+    outputFrameRate: 200
 OpenRTM: 
   "deleteUnmanagedRTCsOnStartingSimulation": false
 viewAreas: 
@@ -362,12 +400,12 @@ viewAreas:
     contents: 
       type: splitter
       orientation: horizontal
-      sizes: [ 512, 1403 ]
+      sizes: [ 512, 1402 ]
       children: 
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 453, 452 ]
+          sizes: [ 493, 491 ]
           children: 
             - 
               type: pane
@@ -375,29 +413,29 @@ viewAreas:
               current: 2
             - 
               type: pane
-              views: [ 1, 7 ]
-              current: 1
+              views: [ 1, 7, 9 ]
+              current: 9
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 646, 259 ]
+          sizes: [ 702, 282 ]
           children: 
             - 
               type: splitter
               orientation: horizontal
-              sizes: [ 618, 780 ]
+              sizes: [ 742, 654 ]
               children: 
                 - 
                   type: pane
-                  views: [ 5, 6, 0 ]
-                  current: 5
+                  views: [ 5, 6, 8 ]
+                  current: 8
                 - 
                   type: pane
                   views: [ 4 ]
                   current: 4
             - 
               type: pane
-              views: [ 3, 8 ]
+              views: [ 3, 10 ]
               current: 3
 layoutOfToolBars: 
   rows: 

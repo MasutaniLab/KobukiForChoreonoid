@@ -16,6 +16,10 @@ links:
       0.0154899, 6.52071e-06, 0.0801071]
     elements:
       -
+        type: RateGyroSensor
+        name: gyro
+        id: 0
+      -
         type: Visual
         elements:
           - 
@@ -144,3 +148,74 @@ links:
                 appearance:
                   material:
                     diffuseColor: [1, 0, 0]
+  -
+    name: clink
+    parent: base_footprint
+    jointType: fixed
+    translation: [0, 0, 0.055]
+    mass: 0.01
+    centerOfMass: [0.0, 0.0, 0.0]
+    inertia: [
+      0.0000167, 0.0, 0.0,
+      0.0, 0.0000167, 0.0,
+      0.0, 0.0, 0.0000167]
+    elements:
+      -
+        type: ForceSensor
+        name: bumperForce
+        id: 1
+      -
+        type: Visual
+      -
+        type: Collision
+        elements:
+          -
+            type: Transform
+            rotation: [0.0, 0.0, 1.0, 0.0]
+            scale: [1.0, 1.0, 1.0]
+            translation: [0.1785, 0.0, 0.0]
+            elements:
+              Shape:
+                geometry:
+                  type: Box
+                  size: [0.001, 0.095, 0.07]
+          -
+            type: Transform
+            rotation: [0.0, 0.0, 1.0, 30.0]
+            scale: [1.0, 1.0, 1.0]
+            translation: [0.1546, 0.08925, 0.0]
+            elements:
+              Shape:
+                geometry:
+                  type: Box
+                  size: [0.001, 0.095, 0.07]
+          -
+            type: Transform
+            rotation: [0.0, 0.0, 1.0, 60.0]
+            scale: [1.0, 1.0, 1.0]
+            translation: [0.08925, 0.1546, 0.0]
+            elements:
+              Shape:
+                geometry:
+                  type: Box
+                  size: [0.001, 0.095, 0.07]
+          -
+            type: Transform
+            rotation: [0.0, 0.0, 1.0, -30.0]
+            scale: [1.0, 1.0, 1.0]
+            translation: [0.1546, -0.08925, 0.0]
+            elements:
+              Shape:
+                geometry:
+                  type: Box
+                  size: [0.001, 0.095, 0.07]
+          -
+            type: Transform
+            rotation: [0.0, 0.0, 1.0, -60.0]
+            scale: [1.0, 1.0, 1.0]
+            translation: [0.08925, -0.1546, 0.0]
+            elements:
+              Shape:
+                geometry:
+                  type: Box
+                  size: [0.001, 0.095, 0.07]
