@@ -1,0 +1,31 @@
+format: ChoreonoidBody
+formatVersion: 1.0
+angleUnit: degree
+name: Box
+links:
+  -
+    name: Box
+    jointType: free
+    material: Ground
+    AMOR: true
+    mass: 5
+    centerOfMass: [0.253, 0.1885, 0.193]
+    inertia: [
+      1, 0, 0, 
+      0, 1, 0, 
+      0, 0, 1]
+    elements:
+      -
+        type: Transform
+        translation: [0.253, 0.1885, 0.193]
+        rotation: [0, 0, 1, 0]
+        elements:           
+          Shape:
+            geometry: 
+              type: Box
+              size: [0.506, 0.377, 0.386] 
+            appearance: 
+              material:
+                ambientIntensity: 0.2
+                diffuseColor: [0.5, 0.5, 0]
+                shininess: 0.2
