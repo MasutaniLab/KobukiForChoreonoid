@@ -2,6 +2,7 @@
    @author Yasuhiro Masutani
 */
 
+#define _USE_MATH_DEFINES
 #include <cnoid/BodyIoRTC>
 #include <cnoid/RateGyroSensor>
 #include <cnoid/ForceSensor>
@@ -9,6 +10,7 @@
 #include <rtm/idl/ExtendedDataTypesSkel.h>
 #include <rtm/DataInPort.h>
 #include <rtm/DataOutPort.h>
+#include <cmath>
 
 using namespace std;
 using namespace cnoid;
