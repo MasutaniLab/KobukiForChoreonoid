@@ -3,7 +3,11 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project(KobukiIoRTC)
 
 find_package(OpenRTM)
+if (WIN32)
+  set(Choreonoid_DIR C:/Choreonoid/share/choreonoid/cmake)
+endif (WIN32)
 find_package(Choreonoid)
+
 
 if (DEFINED OPENRTM_INCLUDE_DIRS)
   string(REGEX REPLACE "-I" ";"
@@ -26,11 +30,14 @@ if (DEFINED OPENRTM_LIBRARIES)
     OPENRTM_LIBRARIES "${OPENRTM_LIBRARIES}")
 endif (DEFINED OPENRTM_LIBRARIES)
 
-add_definitions(${OPENRTM_DEFINITIONS})
-add_definitions(${CHOREONOID_DEFINITIONS})
 include_directories(${OPENRTM_INCLUDE_DIRS})
+include_directories(${OMNIORB_INCLUDE_DIRS})
 include_directories(${CHOREONOID_INCLUDE_DIRS})
+add_definitions(${OPENRTM_DEFINITIONS})
+add_definitions(${OMNIORB_CFLAGS})
+add_definitions(${CHOREONOID_DEFINITIONS})
 link_directories(${OPENRTM_LIBRARY_DIRS})
+link_directories(${OMNIORB_LIBRARY_DIRS})
 link_directories(${CHOREONOID_LIBRARY_DIRS})
 
 set(CMAKE_CXX_STANDARD 11)
@@ -47,7 +54,7 @@ function(add_cnoid_body_io_rtc)
   list(REMOVE_AT ARGV 0)
 
   add_library(${target} SHARED ${ARGV})
-  target_link_libraries(${target} CnoidBodyIoRTC ${OPENRTM_CAMERA_LIBRARY})
+  target_link_libraries(${target} CnoidBodyIoRTC CnoidBody CnoidUtil ${OPENRTM_LIBRARIES} ${OPENRTM_CAMERA_LIBRARY})
   
   if(MSVC)
     add_compile_options(${OPENRTM_CFLAGS})
@@ -56,6 +63,10 @@ function(add_cnoid_body_io_rtc)
   set_target_properties(${target} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CNOID_PLUGIN_SUBDIR}/rtc
     PREFIX "")
+  set_target_properties(${target} PROPERTIES
+    LIBRARY_OUTPUT_DIRECTORY_RELEASE ${PROJECT_BINARY_DIR}/rtc
+    PREFIX "")
+
   if(ENABLE_INSTALL_RPATH)
     set_target_properties(${target} PROPERTIES INSTALL_RPATH "$ORIGIN/../..")
   endif()
