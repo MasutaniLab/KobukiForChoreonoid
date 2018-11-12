@@ -63,7 +63,7 @@ add_dependencies(${PROJECT_NAME} ALL_IDL_TGT)
 if(UNIX)
   target_link_libraries(${PROJECT_NAME} ${OPENRTM_LIBRARIES} libeggx.a  -leggx -lX11 -lm)
 elseif(WIN32)
-  target_link_libraries(${PROJECT_NAME} ${OPENRTM_LIBRARIES} wineggxd.lib winmm.lib Shlwapi.lib)
+  target_link_libraries(${PROJECT_NAME} ${OPENRTM_LIBRARIES} wineggx.lib winmm.lib Shlwapi.lib)
 endif(UNIX)
 
 add_executable(${PROJECT_NAME}Comp ${standalone_srcs}
@@ -71,7 +71,7 @@ add_executable(${PROJECT_NAME}Comp ${standalone_srcs}
 if(UNIX)
   target_link_libraries(${PROJECT_NAME}Comp ${OPENRTM_LIBRARIES} libeggx.a  -leggx -lX11 -lm)
 elseif(WIN32)
-  target_link_libraries(${PROJECT_NAME}Comp ${OPENRTM_LIBRARIES} wineggxd.lib winmm.lib Shlwapi.lib)
+  target_link_libraries(${PROJECT_NAME}Comp ${OPENRTM_LIBRARIES} wineggx.lib winmm.lib Shlwapi.lib)
 endif(UNIX)
 
 install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}Comp
