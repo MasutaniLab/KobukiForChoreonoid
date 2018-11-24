@@ -61,12 +61,12 @@ function(add_cnoid_body_io_rtc)
   endif()
 
   set_target_properties(${target} PROPERTIES
-    LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CNOID_PLUGIN_SUBDIR}/rtc
-    PREFIX "")
-  set_target_properties(${target} PROPERTIES
+    LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/rtc
+    PREFIX ""
     LIBRARY_OUTPUT_DIRECTORY_RELEASE ${PROJECT_BINARY_DIR}/rtc
-    PREFIX "")
-
+    LIBRARY_OUTPUT_DIRECTORY_DEBUG ${PROJECT_BINARY_DIR}/rtc
+	)
+ 
   if(ENABLE_INSTALL_RPATH)
     set_target_properties(${target} PROPERTIES INSTALL_RPATH "$ORIGIN/../..")
   endif()

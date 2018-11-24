@@ -25,7 +25,7 @@
 		</rts:DataPorts>
 		<rts:ConfigurationSets rts:id="default" />
 		<rts:ExecutionContexts xsi:type="rtsExt:execution_context_ext" rts:id="0" rts:rate="1000" rts:kind="PERIODIC" />
-		<rtsExt:Location rtsExt:direction="RIGHT" rtsExt:width="-1" rtsExt:height="-1" rtsExt:x="213" rtsExt:y="308" />
+		<rtsExt:Location rtsExt:direction="RIGHT" rtsExt:width="-1" rtsExt:height="-1" rtsExt:x="391" rtsExt:y="222" />
 	</rts:Components>
 	<rts:Components xsi:type="rtsExt:component_ext" rts:isRequired="false" rts:compositeType="None" rts:activeConfigurationSet="default" rts:instanceName="Turtlebot-KobukiIoRTC" rts:pathUri="localhost/Turtlebot-KobukiIoRTC.rtc" rts:id="RTC:MasutaniLab:MobileRobot:Turtlebot-KobukiIoRTC:1.0">
 		<rtsExt:Properties rtsExt:value="false" rtsExt:name="OpenRTM_NS" />
@@ -59,37 +59,23 @@
 		</rts:DataPorts>
 		<rts:ConfigurationSets rts:id="default" />
 		<rts:ExecutionContexts xsi:type="rtsExt:execution_context_ext" rts:id="0" rts:rate="1000" rts:kind="PERIODIC" />
-		<rtsExt:Location rtsExt:direction="RIGHT" rtsExt:width="-1" rtsExt:height="-1" rtsExt:x="1" rtsExt:y="8" />
+		<rtsExt:Location rtsExt:direction="RIGHT" rtsExt:width="-1" rtsExt:height="-1" rtsExt:x="180" rtsExt:y="0" />
 	</rts:Components>
-	<rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:connectorId="6e12a0ea-0000-0000-0000-000000000000" rts:name="KobukiController0.targetVelocity_Turtlebot-KobukiIoRTC.targetVelocity" rts:dataType="IDL:RTC/TimedVelocity2D:1.0" rts:interfaceType="corba_cdr" rts:dataflowType="push" rts:subscriptionType="flush">
-		<rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="KobukiController0.targetVelocity" rts:instanceName="KobukiController0" rts:componentId="RTC:MasutaniLab:Mobile Robot:KobukiController0:1.0.0">
+	<rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:connectorId="413494f4-12f0-4791-9fa8-568bd22ee8cf" rts:name="KobukiController0.bumper_Turtlebot-KobukiIoRTC.bumper" rts:dataType="IDL:RTC/TimedBooleanSeq:1.0" rts:interfaceType="corba_cdr" rts:dataflowType="push" rts:subscriptionType="flush">
+		<rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="KobukiController0.bumper" rts:instanceName="KobukiController0" rts:componentId="RTC:MasutaniLab:Mobile Robot:KobukiController0:1.0.0">
 			<rtsExt:Properties rtsExt:value="localhost/KobukiController0.rtc" rtsExt:name="COMPONENT_PATH_ID" />
 		</rts:sourceDataPort>
-		<rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Turtlebot-KobukiIoRTC.targetVelocity" rts:instanceName="Turtlebot-KobukiIoRTC" rts:componentId="RTC:MasutaniLab:MobileRobot:Turtlebot-KobukiIoRTC:1.0">
+		<rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Turtlebot-KobukiIoRTC.bumper" rts:instanceName="Turtlebot-KobukiIoRTC" rts:componentId="RTC:MasutaniLab:MobileRobot:Turtlebot-KobukiIoRTC:1.0">
 			<rtsExt:Properties rtsExt:value="localhost/Turtlebot-KobukiIoRTC.rtc" rtsExt:name="COMPONENT_PATH_ID" />
-		</rts:targetDataPort>
-		<rtsExt:Properties rtsExt:value="IDL:RTC/TimedVelocity2D:1.0" rtsExt:name="dataport.data_type" />
-		<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
-		<rtsExt:Properties rtsExt:value="push" rtsExt:name="dataport.dataflow_type" />
-		<rtsExt:Properties rtsExt:value="flush" rtsExt:name="dataport.subscription_type" />
-		<rtsExt:Properties rtsExt:value="little,big" rtsExt:name="dataport.serializer.cdr.endian" />
-		<rtsExt:Properties rtsExt:value="{1:(323,327),2:(328,327),3:(328,0),4:(64,0),5:(64,27),6:(69,27)}" rtsExt:name="POSITION" />
-	</rts:DataPortConnectors>
-	<rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:connectorId="1629e92a-f0f8-4b8c-9a2d-b70cafb584e4" rts:name="Turtlebot-KobukiIoRTC.bumper_KobukiController0.bumper" rts:dataType="IDL:RTC/TimedBooleanSeq:1.0" rts:interfaceType="corba_cdr" rts:dataflowType="push" rts:subscriptionType="flush">
-		<rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Turtlebot-KobukiIoRTC.bumper" rts:instanceName="Turtlebot-KobukiIoRTC" rts:componentId="RTC:MasutaniLab:MobileRobot:Turtlebot-KobukiIoRTC:1.0">
-			<rtsExt:Properties rtsExt:value="localhost/Turtlebot-KobukiIoRTC.rtc" rtsExt:name="COMPONENT_PATH_ID" />
-		</rts:sourceDataPort>
-		<rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="KobukiController0.bumper" rts:instanceName="KobukiController0" rts:componentId="RTC:MasutaniLab:Mobile Robot:KobukiController0:1.0.0">
-			<rtsExt:Properties rtsExt:value="localhost/KobukiController0.rtc" rtsExt:name="COMPONENT_PATH_ID" />
 		</rts:targetDataPort>
 		<rtsExt:Properties rtsExt:value="IDL:RTC/TimedBooleanSeq:1.0" rtsExt:name="dataport.data_type" />
 		<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
 		<rtsExt:Properties rtsExt:value="push" rtsExt:name="dataport.dataflow_type" />
 		<rtsExt:Properties rtsExt:value="flush" rtsExt:name="dataport.subscription_type" />
 		<rtsExt:Properties rtsExt:value="little,big" rtsExt:name="dataport.serializer.cdr.endian" />
-		<rtsExt:Properties rtsExt:value="{1:(129,45),2:(134,45),3:(196,45),4:(196,345),5:(258,345),6:(263,345)}" rtsExt:name="POSITION" />
+		<rtsExt:Properties rtsExt:value="{1:(436,259),2:(431,259),3:(371,259),4:(371,37),5:(311,37),6:(306,37)}" rtsExt:name="POSITION" />
 	</rts:DataPortConnectors>
-	<rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:connectorId="1496c1a8-2841-483e-8a0b-6b3a21aa330b" rts:name="Turtlebot-KobukiIoRTC.currentPose_KobukiController0.currentPose" rts:dataType="IDL:RTC/TimedPose2D:1.0" rts:interfaceType="corba_cdr" rts:dataflowType="push" rts:subscriptionType="flush">
+	<rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:connectorId="3777507b-a84f-440b-b2ba-cc07f584eb84" rts:name="Turtlebot-KobukiIoRTC.currentPose_KobukiController0.currentPose" rts:dataType="IDL:RTC/TimedPose2D:1.0" rts:interfaceType="corba_cdr" rts:dataflowType="push" rts:subscriptionType="flush">
 		<rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Turtlebot-KobukiIoRTC.currentPose" rts:instanceName="Turtlebot-KobukiIoRTC" rts:componentId="RTC:MasutaniLab:MobileRobot:Turtlebot-KobukiIoRTC:1.0">
 			<rtsExt:Properties rtsExt:value="localhost/Turtlebot-KobukiIoRTC.rtc" rtsExt:name="COMPONENT_PATH_ID" />
 		</rts:sourceDataPort>
@@ -101,6 +87,20 @@
 		<rtsExt:Properties rtsExt:value="push" rtsExt:name="dataport.dataflow_type" />
 		<rtsExt:Properties rtsExt:value="flush" rtsExt:name="dataport.subscription_type" />
 		<rtsExt:Properties rtsExt:value="little,big" rtsExt:name="dataport.serializer.cdr.endian" />
-		<rtsExt:Properties rtsExt:value="{1:(129,27),2:(134,27),3:(196,27),4:(196,327),5:(258,327),6:(263,327)}" rtsExt:name="POSITION" />
+		<rtsExt:Properties rtsExt:value="{1:(306,19),2:(311,19),3:(371,19),4:(371,241),5:(431,241),6:(436,241)}" rtsExt:name="POSITION" />
+	</rts:DataPortConnectors>
+	<rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:connectorId="0543add6-30f9-4937-9ff4-81bb8b0ffc1c" rts:name="KobukiController0.targetVelocity_Turtlebot-KobukiIoRTC.targetVelocity" rts:dataType="IDL:RTC/TimedVelocity2D:1.0" rts:interfaceType="corba_cdr" rts:dataflowType="push" rts:subscriptionType="flush">
+		<rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="KobukiController0.targetVelocity" rts:instanceName="KobukiController0" rts:componentId="RTC:MasutaniLab:Mobile Robot:KobukiController0:1.0.0">
+			<rtsExt:Properties rtsExt:value="localhost/KobukiController0.rtc" rtsExt:name="COMPONENT_PATH_ID" />
+		</rts:sourceDataPort>
+		<rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Turtlebot-KobukiIoRTC.targetVelocity" rts:instanceName="Turtlebot-KobukiIoRTC" rts:componentId="RTC:MasutaniLab:MobileRobot:Turtlebot-KobukiIoRTC:1.0">
+			<rtsExt:Properties rtsExt:value="localhost/Turtlebot-KobukiIoRTC.rtc" rtsExt:name="COMPONENT_PATH_ID" />
+		</rts:targetDataPort>
+		<rtsExt:Properties rtsExt:value="IDL:RTC/TimedVelocity2D:1.0" rtsExt:name="dataport.data_type" />
+		<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
+		<rtsExt:Properties rtsExt:value="push" rtsExt:name="dataport.dataflow_type" />
+		<rtsExt:Properties rtsExt:value="flush" rtsExt:name="dataport.subscription_type" />
+		<rtsExt:Properties rtsExt:value="little,big" rtsExt:name="dataport.serializer.cdr.endian" />
+		<rtsExt:Properties rtsExt:value="{1:(496,241),2:(501,241),3:(501,161),4:(241,161),5:(241,19),6:(246,19)}" rtsExt:name="POSITION" />
 	</rts:DataPortConnectors>
 </rts:RtsProfile>

@@ -103,6 +103,7 @@ items:
           plugin: Body
           class: AISTSimulatorItem
           data: 
+            timeStep: 0.002
             realtimeSync: true
             recording: "full"
             timeRangeMode: "Unlimited"
@@ -134,13 +135,13 @@ items:
           data: 
             modelFile: "${PROJECT_DIR}/box.body"
             currentBaseLink: "Box"
-            rootPosition: [ 0, 0.7, 0 ]
+            rootPosition: [ 0.2, 0.7, 0 ]
             rootAttitude: [ 
               1, 0, 0, 
               0, 1, 0, 
               0, 0, 1 ]
             jointPositions: [  ]
-            initialRootPosition: [ 0, 0.7, 0 ]
+            initialRootPosition: [ 0.2, 0.7, 0 ]
             initialRootAttitude: [ 
               1, 0, 0, 
               0, 1, 0, 
@@ -269,7 +270,7 @@ views:
     class: ItemTreeView
     mounted: true
     state: 
-      selected: [ 10 ]
+      selected: [ 7 ]
       checked: [ 1, 2, 4, 5, 7, 8, 9, 10, 11 ]
       expanded: [ 1, 2, 3, 7 ]
   - 
@@ -322,9 +323,9 @@ views:
           fieldOfView: 0.6978
           near: 0.01
           far: 100
-          eye: [ 1.03746252, -3.48895442, 3.15831631 ]
-          direction: [ -0.0125246926, 0.867061626, -0.498043441 ]
-          up: [ -0.00719347983, 0.497991489, 0.867152081 ]
+          eye: [ 0.995549123, -3.49655062, 3.15831631 ]
+          direction: [ -0.00385359481, 0.867143518, -0.498043441 ]
+          up: [ -0.00221328838, 0.498038523, 0.867152081 ]
         - 
           camera: [ System, Orthographic ]
           orthoHeight: 20
@@ -355,7 +356,7 @@ views:
       spinBox: true
       slider: true
       labelOnLeft: true
-      currentBodyItem: 10
+      currentBodyItem: 7
   - 
     id: 7
     plugin: Body
@@ -363,7 +364,7 @@ views:
     mounted: true
     state: 
       listingMode: "Link List"
-      currentBodyItem: 10
+      currentBodyItem: 7
   - 
     id: 8
     name: "RTC Diagram"
@@ -408,7 +409,7 @@ toolbars:
     penetrationBlockDepth: 0.0005
     lazyCollisionDetectionMode: true
   "BodyBar": 
-    current: 10
+    current: 7
   "LeggedBodyBar": 
     stanceWidth: 0.15
   "BodyMotionGenerationBar": 
@@ -513,12 +514,12 @@ viewAreas:
     contents: 
       type: splitter
       orientation: horizontal
-      sizes: [ 512, 1402 ]
+      sizes: [ 512, 1401 ]
       children: 
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 493, 491 ]
+          sizes: [ 475, 473 ]
           children: 
             - 
               type: pane
@@ -527,21 +528,21 @@ viewAreas:
             - 
               type: pane
               views: [ 1, 7, 9 ]
-              current: 9
+              current: 1
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 702, 282 ]
+          sizes: [ 676, 272 ]
           children: 
             - 
               type: splitter
               orientation: horizontal
-              sizes: [ 742, 654 ]
+              sizes: [ 529, 865 ]
               children: 
                 - 
                   type: pane
                   views: [ 5, 6, 8 ]
-                  current: 5
+                  current: 8
                 - 
                   type: pane
                   views: [ 4 ]

@@ -20,6 +20,63 @@ links:
         name: gyro
         id: 0
       -
+        type: Camera
+        name: realsense
+        translation: [ -0.15, 0.0, 0.30 ]
+        rotation: [ [ 1, 0, 0, 90 ], [ 0, 1, 0, -90 ] ]
+        format: COLOR_DEPTH
+        fieldOfView: 46
+        nearClipDistance: 0.5
+        farClipDistance: 2.5
+        width: 320
+        height: 240
+        frameRate: 15
+        elements:
+          Shape:
+            geometry:
+              type: Box
+              size: [0.15, 0.03, 0.01]
+            appearance:
+              material:
+                diffuseColor: [ 0, 0, 1 ]
+                shininess: 0.2
+      -
+        type: RangeSensor
+        name: urg
+        translation: [ 0.105, 0.0, 0.254 ]
+        rotation: [ [ 1, 0, 0, 90 ], [ 0, 1, 0, -90 ] ]
+        yawRange: 240
+        yawStep: 0.36
+        scanRate: 100
+        minDistance: 0.022
+        maxDistance: 5.6
+        elements:
+          -
+            type: Transform
+            translation: [0, -0.03265, 0]
+            elements:
+              Shape:
+                geometry:
+                  type: Box
+                  size: [0.05, 0.041, 0.05]
+                appearance:
+                  material:
+                    diffuseColor: [ 1, 1, 0 ]
+                    shininess: 0.2
+          -
+            type: Transform
+            translation: [0, 0.00235, 0]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.021
+                  height: 0.029
+                appearance:
+                  material:
+                    diffuseColor: [ 1, 1, 0 ]
+                    shininess: 0.2
+      -
         type: Visual
         elements:
           - 
@@ -36,6 +93,118 @@ links:
             elements:
               Resource:
                 uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_plate_bottom_link.wrl"
+          -
+            type: Transform
+            translation: [-0.01364, 0.0, 0.1976]
+            rotation: [0, 1, 0, 0]
+            elements:
+              Resource:
+                uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_plate_middle_link.wrl"
+          -
+            type: Transform
+            translation: [-0.01364, 0.0, 0.4068]
+            rotation: [0, 1, 0, 0]
+            elements:
+              Resource:
+                uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_plate_top_link.wrl"
+          -
+            type: Transform
+            translation: [0.12, 0.082, 0.113]
+            rotation: [0, 1, 0, 0]
+            elements:
+              Resource:
+                uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_bottom_0_link.wrl"
+          -
+            type: Transform
+            translation: [0.055, 0.12, 0.113]
+            rotation: [0, 1, 0, 0]
+            elements:
+              Resource:
+                uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_bottom_1_link.wrl"
+          -
+            type: Transform
+            translation: [-0.055, 0.12, 0.113]
+            rotation: [0, 1, 0, 0]
+            elements:
+              Resource:
+                uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_bottom_2_link.wrl"
+          -
+            type: Transform
+            translation: [0.12, -0.082, 0.113]
+            rotation: [0, 1, 0, 0]
+            elements:
+              Resource:
+                uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_bottom_3_link.wrl"
+          -
+            type: Transform
+            translation: [0.055, -0.12, 0.113]
+            rotation: [0, 1, 0, 0]
+            elements:
+              Resource:
+                uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_bottom_4_link.wrl"
+          -
+            type: Transform
+            translation: [-0.055, -0.12, 0.113]
+            rotation: [0, 1, 0, 0]
+            elements:
+              Resource:
+                uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_bottom_5_link.wrl"
+          -
+            type: Transform
+            translation: [0.0381, 0.1505, 0.1742]
+            rotation: [1.32678921756e-06, 0.999999999998, 1.32678921756e-06, 180]
+            elements:
+               Resource:
+                 uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_middle_0_link.wrl"
+          -
+            type: Transform
+            translation: [0.0381, -0.1505, 0.1742]
+            rotation: [1.32678921756e-06, 0.999999999998, 1.32678921756e-06, 180]
+            elements:
+              Resource:
+                uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_middle_1_link.wrl"
+          -
+            type: Transform
+            translation: [-0.0381, 0.1505, 0.1742]
+            rotation: [1.32678921756e-06, 0.999999999998, 1.32678921756e-06, 180]
+            elements:
+                Resource:
+                  uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_middle_2_link.wrl"
+          -
+            type: Transform
+            translation: [-0.0381, -0.1505, 0.1742]
+            rotation: [1.32678921756e-06, 0.999999999998, 1.32678921756e-06, 180]
+            elements:
+              Resource:
+                uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_middle_3_link.wrl"
+          -
+            type: Transform
+            translation: [0.0381, 0.1505, 0.3022]
+            rotation: [0, 1, 0, 0]
+            elements:
+              Resource:
+                uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_top_0_link.wrl"
+          -
+            type: Transform
+            translation: [0.0381, -0.1505, 0.3022]
+            rotation: [0, 1, 0, 0]
+            elements:
+              Resource:
+                uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_top_1_link.wrl"
+          -
+            type: Transform
+            translation: [-0.0381, 0.1505, 0.3022]
+            rotation: [0, 1, 0, 0]
+            elements:
+              Resource:
+                uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_top_2_link.wrl"
+          -
+            type: Transform
+            translation: [-0.0381, -0.1505, 0.3022]
+            rotation: [0, 1, 0, 0]
+            elements:
+              Resource:
+                uri: "turtlebot-base_footprint-turtlebot-base_footprint_visual_pole_top_3_link.wrl"
       -
         type: Collision
         elements:
@@ -64,7 +233,17 @@ links:
                     diffuseColor: [0, 0, 1]
           -
             type: Transform
-            translation: [0.115, 0.0, 0.0172]
+            translation: [0.12, 0.082, 0.113]
+            rotation: [1.0, -0.0, -0.0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.006
+                  height: 0.0492
+          -
+            type: Transform
+            translation: [0.115, 0, 0.0172]
             rotation: [0, 1, 0, 0]
             elements:
               Shape:
@@ -75,6 +254,176 @@ links:
                 appearance:
                   material:
                     diffuseColor: [0, 0, 1]
+          -
+            type: Transform
+            translation: [0, 0, 0.1408]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.17
+                  height: 0.006
+          -
+            type: Transform
+            translation: [0, 0, 0.1976]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.17
+                  height: 0.006
+          -
+            type: Transform
+            translation: [0, 0, 0.4068]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.17
+                  height: 0.006
+          -
+            type: Transform
+            translation: [0.12, 0.082, 0.113]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.006
+                  height: 0.0492
+          -
+            type: Transform
+            translation: [0.055, 0.12, 0.113]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.006
+                  height: 0.0492
+          -
+            type: Transform
+            translation: [-0.055, 0.12, 0.113]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.006
+                  height: 0.0492
+          -
+            type: Transform
+            translation: [0.12, -0.082, 0.113]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.006
+                  height: 0.0492
+          -
+            type: Transform
+            translation: [0.055, -0.12, 0.113]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.006
+                  height: 0.0492
+          -
+            type: Transform
+            translation: [-0.055, -0.12, 0.113]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.006
+                  height: 0.0492
+          -
+            type: Transform
+            translation: [0.0381, 0.1505, 0.1742]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.006
+                  height: 0.0608
+          -
+            type: Transform
+            translation: [0.0381, -0.1505, 0.1742]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.006
+                  height: 0.0608
+          -
+            type: Transform
+            translation: [-0.0381, 0.1505, 0.1742]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.006
+                  height: 0.0608
+          -
+            type: Transform
+            translation: [-0.0381, -0.1505, 0.1742]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.006
+                  height: 0.0608
+          -
+            type: Transform
+            translation: [0.0381, 0.1505, 0.3022]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.006
+                  height: 0.2032
+          -
+            type: Transform
+            translation: [0.0381, -0.1505, 0.3022]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.006
+                  height: 0.2032
+          -
+            type: Transform
+            translation: [-0.0381, 0.1505, 0.3022]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.006
+                  height: 0.2032
+          -
+            type: Transform
+            translation: [-0.0381, -0.1505, 0.3022]
+            rotation: [1, -0, -0, 90]
+            elements:
+              Shape:
+                geometry:
+                  type: Cylinder
+                  radius: 0.006
+                  height: 0.2032
   -
     name: wheel_left_link
     parent: base_footprint
