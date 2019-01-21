@@ -283,7 +283,7 @@ RTC::ReturnCode_t KobukiIoRTC::onExecute(RTC::UniqueId ec_id)
     m_targetVelocityIn.read();
     m_v = m_targetVelocity.data.vx;
     m_w = m_targetVelocity.data.va;
-    //cout << m_v << ", " << m_w << endl;
+    cout << m_v << ", " << m_w << endl;
   }
 
   if (m_poseUpdateIn.isNew()) {

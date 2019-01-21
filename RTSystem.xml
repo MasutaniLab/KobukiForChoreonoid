@@ -1,31 +1,212 @@
 <?xml version="1.0"?>
 <rts:RtsProfile rts:version="0.2" rts:id="RTSystem:AIST:RTSystem:1.0.0" xmlns:rts="http://www.openrtp.org/namespaces/rts" xmlns:rtsExt="http://www.openrtp.org/namespaces/rts_ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<rts:Components xsi:type="rtsExt:component_ext" rts:isRequired="false" rts:compositeType="None" rts:activeConfigurationSet="default" rts:instanceName="KobukiController0" rts:pathUri="localhost/KobukiController0.rtc" rts:id="RTC:MasutaniLab:Mobile Robot:KobukiController0:1.0.0">
+	<rts:Components xsi:type="rtsExt:component_ext" rts:isRequired="false" rts:compositeType="None" rts:activeConfigurationSet="default" rts:instanceName="Mapper_MRPT0" rts:pathUri="localhost/Mapper_MRPT0.rtc" rts:id="RTC:ssr:Navigation:Mapper_MRPT0:1.0.2">
 		<rtsExt:Properties rtsExt:value="false" rtsExt:name="OpenRTM_NS" />
-		<rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="KobukiController0.currentPose">
+		<rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Mapper_MRPT0.range">
+			<rtsExt:Properties rtsExt:value="DataInPort" rtsExt:name="port.port_type" />
+			<rtsExt:Properties rtsExt:value="IDL:RTC/RangeData:1.0" rtsExt:name="dataport.data_type" />
+			<rtsExt:Properties rtsExt:value="Any" rtsExt:name="dataport.subscription_type" />
+			<rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type" />
+			<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
+		</rts:DataPorts>
+		<rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Mapper_MRPT0.odometry">
 			<rtsExt:Properties rtsExt:value="DataInPort" rtsExt:name="port.port_type" />
 			<rtsExt:Properties rtsExt:value="IDL:RTC/TimedPose2D:1.0" rtsExt:name="dataport.data_type" />
 			<rtsExt:Properties rtsExt:value="Any" rtsExt:name="dataport.subscription_type" />
 			<rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type" />
 			<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
 		</rts:DataPorts>
-		<rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="KobukiController0.bumper">
-			<rtsExt:Properties rtsExt:value="DataInPort" rtsExt:name="port.port_type" />
-			<rtsExt:Properties rtsExt:value="IDL:RTC/TimedBooleanSeq:1.0" rtsExt:name="dataport.data_type" />
-			<rtsExt:Properties rtsExt:value="Any" rtsExt:name="dataport.subscription_type" />
-			<rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type" />
-			<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
-		</rts:DataPorts>
-		<rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="KobukiController0.targetVelocity">
+		<rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Mapper_MRPT0.estimatedPose">
 			<rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type" />
-			<rtsExt:Properties rtsExt:value="IDL:RTC/TimedVelocity2D:1.0" rtsExt:name="dataport.data_type" />
+			<rtsExt:Properties rtsExt:value="IDL:RTC/TimedPose2D:1.0" rtsExt:name="dataport.data_type" />
 			<rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type" />
 			<rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type" />
 			<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
 		</rts:DataPorts>
-		<rts:ConfigurationSets rts:id="default" />
+		<rts:ServicePorts xsi:type="rtsExt:serviceport_ext" rts:name="Mapper_MRPT0.gridMapper">
+			<rtsExt:Properties rtsExt:value="CorbaPort" rtsExt:name="port.port_type" />
+		</rts:ServicePorts>
+		<rts:ConfigurationSets rts:id="default">
+			<rts:ConfigurationData rts:data="0" rts:name="debug" />
+			<rts:ConfigurationData rts:data="false" rts:name="start_map_update_in_activated" />
+			<rts:ConfigurationData rts:data="icpClassic" rts:name="ICP_algorithm" />
+			<rts:ConfigurationData rts:data="true" rts:name="ICP_onlyClosestCorrespondences" />
+			<rts:ConfigurationData rts:data="false" rts:name="ICP_onlyUniqueRobust" />
+			<rts:ConfigurationData rts:data="80" rts:name="ICP_maxIterations" />
+			<rts:ConfigurationData rts:data="0.000001" rts:name="ICP_minAbsStep_trans" />
+			<rts:ConfigurationData rts:data="0.000001" rts:name="ICP_minAbsStep_rot" />
+			<rts:ConfigurationData rts:data="0.2" rts:name="ICP_thresholdDist" />
+			<rts:ConfigurationData rts:data="0.1745" rts:name="ICP_thresholdAng" />
+			<rts:ConfigurationData rts:data="0.8" rts:name="ICP_ALFA" />
+			<rts:ConfigurationData rts:data="0.05" rts:name="ICP_smallestThresholdDist" />
+			<rts:ConfigurationData rts:data="0.0004" rts:name="ICP_covariance_varPoints" />
+			<rts:ConfigurationData rts:data="false" rts:name="ICP_doRANSAC" />
+			<rts:ConfigurationData rts:data="100" rts:name="ICP_ransac_nSimulations" />
+			<rts:ConfigurationData rts:data="5" rts:name="ICP_ransac_minSetSize" />
+			<rts:ConfigurationData rts:data="20" rts:name="ICP_ransac_maxSetSize" />
+			<rts:ConfigurationData rts:data="3.0" rts:name="ICP_ransac_mahalanobisDistanceThreshold" />
+			<rts:ConfigurationData rts:data="0.2" rts:name="ICP_ransac_normalizationStd" />
+			<rts:ConfigurationData rts:data="false" rts:name="ICP_ransac_fuseByCorrsMatch" />
+			<rts:ConfigurationData rts:data="0.01" rts:name="ICP_ransac_fuseMaxDiffXY" />
+			<rts:ConfigurationData rts:data="0.001745" rts:name="ICP_ransac_fuseMaxDiffPhi" />
+			<rts:ConfigurationData rts:data="0.07" rts:name="ICP_kernel_rho" />
+			<rts:ConfigurationData rts:data="true" rts:name="ICP_use_kernel" />
+			<rts:ConfigurationData rts:data="0.05" rts:name="ICP_Axy_aprox_derivatives" />
+			<rts:ConfigurationData rts:data="0.0001" rts:name="ICP_LM_initial_lambda" />
+			<rts:ConfigurationData rts:data="false" rts:name="ICP_skip_cov_calculation" />
+			<rts:ConfigurationData rts:data="true" rts:name="ICP_skip_quality_calculation" />
+			<rts:ConfigurationData rts:data="5" rts:name="ICP_corresponding_points_decimation" />
+			<rts:ConfigurationData rts:data="0" rts:name="ICP_matchAgainstTheGrid" />
+			<rts:ConfigurationData rts:data="0.5" rts:name="ICP_insertionLinDistance" />
+			<rts:ConfigurationData rts:data="0.8" rts:name="ICP_insertionAngDistance" />
+			<rts:ConfigurationData rts:data="0.5" rts:name="ICP_localizationLinDistance" />
+			<rts:ConfigurationData rts:data="0.8" rts:name="ICP_localizationAngDistance" />
+			<rts:ConfigurationData rts:data="0.40" rts:name="ICP_minICPgoodnessToAccept" />
+			<rts:ConfigurationData rts:data="-5.00" rts:name="MAP_min_x" />
+			<rts:ConfigurationData rts:data="5.00" rts:name="MAP_max_x" />
+			<rts:ConfigurationData rts:data="-10.0" rts:name="MAP_min_y" />
+			<rts:ConfigurationData rts:data="5.00" rts:name="MAP_max_y" />
+			<rts:ConfigurationData rts:data="0.01" rts:name="MAP_resolution" />
+			<rts:ConfigurationData rts:data="0.0" rts:name="MAP_insertion_mapAltitude" />
+			<rts:ConfigurationData rts:data="false" rts:name="MAP_insertion_useMapAltitude" />
+			<rts:ConfigurationData rts:data="15" rts:name="MAP_insertion_maxDistanceInsertion" />
+			<rts:ConfigurationData rts:data="0.55" rts:name="MAP_insertion_maxOccupancyUpdateCertainty" />
+			<rts:ConfigurationData rts:data="true" rts:name="MAP_insertion_considerInvalidRangesAsFreeSpace" />
+			<rts:ConfigurationData rts:data="1" rts:name="MAP_insertion_decimation" />
+			<rts:ConfigurationData rts:data="0" rts:name="MAP_insertion_horizontalTolerance" />
+			<rts:ConfigurationData rts:data="1" rts:name="MAP_insertion_CFD_features_gaussian_size" />
+			<rts:ConfigurationData rts:data="3" rts:name="MAP_insertion_CFD_features_median_size" />
+			<rts:ConfigurationData rts:data="false" rts:name="MAP_insertion_wideningBeamsWithDistance" />
+			<rts:ConfigurationData rts:data="0.0" rts:name="initial_pose_x" />
+			<rts:ConfigurationData rts:data="0.0" rts:name="initial_pose_y" />
+			<rts:ConfigurationData rts:data="0.0" rts:name="initial_pose_phi" />
+		</rts:ConfigurationSets>
+		<rts:ConfigurationSets rts:id="__widget__">
+			<rts:ConfigurationData rts:data="text" rts:name="debug" />
+			<rts:ConfigurationData rts:data="radio" rts:name="start_map_update_in_activated" />
+			<rts:ConfigurationData rts:data="radio" rts:name="ICP_algorithm" />
+			<rts:ConfigurationData rts:data="radio" rts:name="ICP_onlyClosestCorrespondences" />
+			<rts:ConfigurationData rts:data="radio" rts:name="ICP_onlyUniqueRobust" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_maxIterations" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_minAbsStep_trans" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_minAbsStep_rot" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_thresholdDist" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_thresholdAng" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_ALFA" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_smallestThresholdDist" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_covariance_varPoints" />
+			<rts:ConfigurationData rts:data="radio" rts:name="ICP_doRANSAC" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_ransac_nSimulations" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_ransac_minSetSize" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_ransac_maxSetSize" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_ransac_mahalanobisDistanceThreshold" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_ransac_normalizationStd" />
+			<rts:ConfigurationData rts:data="radio" rts:name="ICP_ransac_fuseByCorrsMatch" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_ransac_fuseMaxDiffXY" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_ransac_fuseMaxDiffPhi" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_kernel_rho" />
+			<rts:ConfigurationData rts:data="radio" rts:name="ICP_use_kernel" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_Axy_aprox_derivatives" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_LM_initial_lambda" />
+			<rts:ConfigurationData rts:data="radio" rts:name="ICP_skip_cov_calculation" />
+			<rts:ConfigurationData rts:data="radio" rts:name="ICP_skip_quality_calculation" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_corresponding_points_decimation" />
+			<rts:ConfigurationData rts:data="radio" rts:name="ICP_matchAgainstTheGrid" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_insertionLinDistance" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_insertionAngDistance" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_localizationLinDistance" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_localizationAngDistance" />
+			<rts:ConfigurationData rts:data="text" rts:name="ICP_minICPgoodnessToAccept" />
+			<rts:ConfigurationData rts:data="text" rts:name="MAP_min_x" />
+			<rts:ConfigurationData rts:data="text" rts:name="MAP_max_x" />
+			<rts:ConfigurationData rts:data="text" rts:name="MAP_min_y" />
+			<rts:ConfigurationData rts:data="text" rts:name="MAP_max_y" />
+			<rts:ConfigurationData rts:data="text" rts:name="MAP_resolution" />
+			<rts:ConfigurationData rts:data="text" rts:name="MAP_insertion_mapAltitude" />
+			<rts:ConfigurationData rts:data="radio" rts:name="MAP_insertion_useMapAltitude" />
+			<rts:ConfigurationData rts:data="text" rts:name="MAP_insertion_maxDistanceInsertion" />
+			<rts:ConfigurationData rts:data="text" rts:name="MAP_insertion_maxOccupancyUpdateCertainty" />
+			<rts:ConfigurationData rts:data="radio" rts:name="MAP_insertion_considerInvalidRangesAsFreeSpace" />
+			<rts:ConfigurationData rts:data="text" rts:name="MAP_insertion_decimation" />
+			<rts:ConfigurationData rts:data="text" rts:name="MAP_insertion_horizontalTolerance" />
+			<rts:ConfigurationData rts:data="text" rts:name="MAP_insertion_CFD_features_gaussian_size" />
+			<rts:ConfigurationData rts:data="text" rts:name="MAP_insertion_CFD_features_median_size" />
+			<rts:ConfigurationData rts:data="radio" rts:name="MAP_insertion_wideningBeamsWithDistance" />
+			<rts:ConfigurationData rts:data="text" rts:name="initial_pose_x" />
+			<rts:ConfigurationData rts:data="text" rts:name="initial_pose_y" />
+			<rts:ConfigurationData rts:data="text" rts:name="initial_pose_phi" />
+		</rts:ConfigurationSets>
+		<rts:ConfigurationSets rts:id="__constraints__">
+			<rts:ConfigurationData rts:data="(true,false)" rts:name="start_map_update_in_activated" />
+			<rts:ConfigurationData rts:data="(icpClassic,icpLevenbergMarquardt,icpIKF)" rts:name="ICP_algorithm" />
+			<rts:ConfigurationData rts:data="(true,false)" rts:name="ICP_onlyClosestCorrespondences" />
+			<rts:ConfigurationData rts:data="(true,false)" rts:name="ICP_onlyUniqueRobust" />
+			<rts:ConfigurationData rts:data="(true,false)" rts:name="ICP_doRANSAC" />
+			<rts:ConfigurationData rts:data="(true,false)" rts:name="ICP_ransac_fuseByCorrsMatch" />
+			<rts:ConfigurationData rts:data="(true,false)" rts:name="ICP_use_kernel" />
+			<rts:ConfigurationData rts:data="(true,false)" rts:name="ICP_skip_cov_calculation" />
+			<rts:ConfigurationData rts:data="(true,false)" rts:name="ICP_skip_quality_calculation" />
+			<rts:ConfigurationData rts:data="(true,false)" rts:name="ICP_matchAgainstTheGrid" />
+			<rts:ConfigurationData rts:data="(true,false)" rts:name="MAP_insertion_useMapAltitude" />
+			<rts:ConfigurationData rts:data="(true,false)" rts:name="MAP_insertion_considerInvalidRangesAsFreeSpace" />
+			<rts:ConfigurationData rts:data="(true,false)" rts:name="MAP_insertion_wideningBeamsWithDistance" />
+		</rts:ConfigurationSets>
 		<rts:ExecutionContexts xsi:type="rtsExt:execution_context_ext" rts:id="0" rts:rate="1000" rts:kind="PERIODIC" />
-		<rtsExt:Location rtsExt:direction="RIGHT" rtsExt:width="-1" rtsExt:height="-1" rtsExt:x="391" rtsExt:y="222" />
+		<rtsExt:Location rtsExt:direction="RIGHT" rtsExt:width="-1" rtsExt:height="-1" rtsExt:x="160" rtsExt:y="291" />
+	</rts:Components>
+	<rts:Components xsi:type="rtsExt:component_ext" rts:isRequired="false" rts:compositeType="None" rts:activeConfigurationSet="default" rts:instanceName="NavigationManager0" rts:pathUri="localhost/NavigationManager0.rtc" rts:id="RTC:Sugar Sweet Robotics:Navigation:NavigationManager0:1.0.2">
+		<rtsExt:Properties rtsExt:value="false" rtsExt:name="OpenRTM_NS" />
+		<rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="NavigationManager0.currentPose">
+			<rtsExt:Properties rtsExt:value="DataInPort" rtsExt:name="port.port_type" />
+			<rtsExt:Properties rtsExt:value="IDL:RTC/TimedPose2D:1.0" rtsExt:name="dataport.data_type" />
+			<rtsExt:Properties rtsExt:value="Any" rtsExt:name="dataport.subscription_type" />
+			<rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type" />
+			<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
+		</rts:DataPorts>
+		<rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="NavigationManager0.range">
+			<rtsExt:Properties rtsExt:value="DataInPort" rtsExt:name="port.port_type" />
+			<rtsExt:Properties rtsExt:value="IDL:RTC/RangeData:1.0" rtsExt:name="dataport.data_type" />
+			<rtsExt:Properties rtsExt:value="Any" rtsExt:name="dataport.subscription_type" />
+			<rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type" />
+			<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
+		</rts:DataPorts>
+		<rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="NavigationManager0.camera">
+			<rtsExt:Properties rtsExt:value="DataInPort" rtsExt:name="port.port_type" />
+			<rtsExt:Properties rtsExt:value="IDL:RTC/CameraImage:1.0" rtsExt:name="dataport.data_type" />
+			<rtsExt:Properties rtsExt:value="Any" rtsExt:name="dataport.subscription_type" />
+			<rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type" />
+			<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
+		</rts:DataPorts>
+		<rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="NavigationManager0.targetVelocity">
+			<rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type" />
+			<rtsExt:Properties rtsExt:value="IDL:RTC/TimedVelocity2D:1.0" rtsExt:name="dataport.data_type" />
+			<rtsExt:Properties rtsExt:value="new, flush, periodic" rtsExt:name="dataport.subscription_type" />
+			<rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type" />
+			<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
+		</rts:DataPorts>
+		<rts:ServicePorts xsi:type="rtsExt:serviceport_ext" rts:name="NavigationManager0.mapperService">
+			<rtsExt:Properties rtsExt:value="CorbaPort" rtsExt:name="port.port_type" />
+		</rts:ServicePorts>
+		<rts:ServicePorts xsi:type="rtsExt:serviceport_ext" rts:name="NavigationManager0.mapServer">
+			<rtsExt:Properties rtsExt:value="CorbaPort" rtsExt:name="port.port_type" />
+		</rts:ServicePorts>
+		<rts:ServicePorts xsi:type="rtsExt:serviceport_ext" rts:name="NavigationManager0.pathPlanner">
+			<rtsExt:Properties rtsExt:value="CorbaPort" rtsExt:name="port.port_type" />
+		</rts:ServicePorts>
+		<rts:ServicePorts xsi:type="rtsExt:serviceport_ext" rts:name="NavigationManager0.pathFollower">
+			<rtsExt:Properties rtsExt:value="CorbaPort" rtsExt:name="port.port_type" />
+		</rts:ServicePorts>
+		<rts:ConfigurationSets rts:id="default">
+			<rts:ConfigurationData rts:data="0" rts:name="debug" />
+		</rts:ConfigurationSets>
+		<rts:ConfigurationSets rts:id="__widget__">
+			<rts:ConfigurationData rts:data="text" rts:name="debug" />
+		</rts:ConfigurationSets>
+		<rts:ExecutionContexts xsi:type="rtsExt:execution_context_ext" rts:id="0" rts:rate="1000" rts:kind="PERIODIC">
+			<rtsExt:Properties rtsExt:value="jp.go.aist.rtm.RTC.executionContext.PeriodicExecutionContext" rtsExt:name="type" />
+			<rtsExt:Properties rtsExt:value="1000.0" rtsExt:name="rate" />
+		</rts:ExecutionContexts>
+		<rtsExt:Location rtsExt:direction="RIGHT" rtsExt:width="-1" rtsExt:height="-1" rtsExt:x="295" rtsExt:y="111" />
 	</rts:Components>
 	<rts:Components xsi:type="rtsExt:component_ext" rts:isRequired="false" rts:compositeType="None" rts:activeConfigurationSet="default" rts:instanceName="Turtlebot-KobukiIoRTC" rts:pathUri="localhost/Turtlebot-KobukiIoRTC.rtc" rts:id="RTC:MasutaniLab:MobileRobot:Turtlebot-KobukiIoRTC:1.0">
 		<rtsExt:Properties rtsExt:value="false" rtsExt:name="OpenRTM_NS" />
@@ -59,48 +240,126 @@
 		</rts:DataPorts>
 		<rts:ConfigurationSets rts:id="default" />
 		<rts:ExecutionContexts xsi:type="rtsExt:execution_context_ext" rts:id="0" rts:rate="1000" rts:kind="PERIODIC" />
-		<rtsExt:Location rtsExt:direction="RIGHT" rtsExt:width="-1" rtsExt:height="-1" rtsExt:x="180" rtsExt:y="0" />
+		<rtsExt:Location rtsExt:direction="RIGHT" rtsExt:width="-1" rtsExt:height="-1" rtsExt:x="73" rtsExt:y="516" />
 	</rts:Components>
-	<rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:connectorId="413494f4-12f0-4791-9fa8-568bd22ee8cf" rts:name="KobukiController0.bumper_Turtlebot-KobukiIoRTC.bumper" rts:dataType="IDL:RTC/TimedBooleanSeq:1.0" rts:interfaceType="corba_cdr" rts:dataflowType="push" rts:subscriptionType="flush">
-		<rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="KobukiController0.bumper" rts:instanceName="KobukiController0" rts:componentId="RTC:MasutaniLab:Mobile Robot:KobukiController0:1.0.0">
-			<rtsExt:Properties rtsExt:value="localhost/KobukiController0.rtc" rtsExt:name="COMPONENT_PATH_ID" />
+	<rts:Components xsi:type="rtsExt:component_ext" rts:isRequired="false" rts:compositeType="None" rts:activeConfigurationSet="default" rts:instanceName="Turtlebot-VisionSensorIoRTC" rts:pathUri="localhost/Turtlebot-VisionSensorIoRTC.rtc" rts:id="RTC:Choreonoid:Generic:Turtlebot-VisionSensorIoRTC:1.0.0">
+		<rtsExt:Properties rtsExt:value="false" rtsExt:name="OpenRTM_NS" />
+		<rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Turtlebot-VisionSensorIoRTC.realsense_switch">
+			<rtsExt:Properties rtsExt:value="DataInPort" rtsExt:name="port.port_type" />
+			<rtsExt:Properties rtsExt:value="IDL:RTC/TimedBoolean:1.0" rtsExt:name="dataport.data_type" />
+			<rtsExt:Properties rtsExt:value="Any" rtsExt:name="dataport.subscription_type" />
+			<rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type" />
+			<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
+		</rts:DataPorts>
+		<rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Turtlebot-VisionSensorIoRTC.urg_switch">
+			<rtsExt:Properties rtsExt:value="DataInPort" rtsExt:name="port.port_type" />
+			<rtsExt:Properties rtsExt:value="IDL:RTC/TimedBoolean:1.0" rtsExt:name="dataport.data_type" />
+			<rtsExt:Properties rtsExt:value="Any" rtsExt:name="dataport.subscription_type" />
+			<rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type" />
+			<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
+		</rts:DataPorts>
+		<rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Turtlebot-VisionSensorIoRTC.realsense">
+			<rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type" />
+			<rtsExt:Properties rtsExt:value="IDL:Img/TimedCameraImage:1.0" rtsExt:name="dataport.data_type" />
+			<rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type" />
+			<rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type" />
+			<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
+		</rts:DataPorts>
+		<rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Turtlebot-VisionSensorIoRTC.realsense-depth">
+			<rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type" />
+			<rtsExt:Properties rtsExt:value="IDL:PointCloudTypes/PointCloud:1.0" rtsExt:name="dataport.data_type" />
+			<rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type" />
+			<rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type" />
+			<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
+		</rts:DataPorts>
+		<rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Turtlebot-VisionSensorIoRTC.urg">
+			<rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type" />
+			<rtsExt:Properties rtsExt:value="IDL:RTC/RangeData:1.0" rtsExt:name="dataport.data_type" />
+			<rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type" />
+			<rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type" />
+			<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
+		</rts:DataPorts>
+		<rts:ConfigurationSets rts:id="default" />
+		<rts:ExecutionContexts xsi:type="rtsExt:execution_context_ext" rts:id="0" rts:rate="1000" rts:kind="PERIODIC" />
+		<rtsExt:Location rtsExt:direction="RIGHT" rtsExt:width="-1" rtsExt:height="-1" rtsExt:x="49" rtsExt:y="9" />
+	</rts:Components>
+	<rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:connectorId="4b69455a-248b-424f-95c2-1ae997fc1cc2" rts:name="Mapper_MRPT0.range_Turtlebot-VisionSensorIoRTC.urg" rts:dataType="IDL:RTC/RangeData:1.0" rts:interfaceType="corba_cdr" rts:dataflowType="push" rts:subscriptionType="flush">
+		<rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Mapper_MRPT0.range" rts:instanceName="Mapper_MRPT0" rts:componentId="RTC:ssr:Navigation:Mapper_MRPT0:1.0.2">
+			<rtsExt:Properties rtsExt:value="localhost/Mapper_MRPT0.rtc" rtsExt:name="COMPONENT_PATH_ID" />
 		</rts:sourceDataPort>
-		<rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Turtlebot-KobukiIoRTC.bumper" rts:instanceName="Turtlebot-KobukiIoRTC" rts:componentId="RTC:MasutaniLab:MobileRobot:Turtlebot-KobukiIoRTC:1.0">
-			<rtsExt:Properties rtsExt:value="localhost/Turtlebot-KobukiIoRTC.rtc" rtsExt:name="COMPONENT_PATH_ID" />
+		<rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Turtlebot-VisionSensorIoRTC.urg" rts:instanceName="Turtlebot-VisionSensorIoRTC" rts:componentId="RTC:Choreonoid:Generic:Turtlebot-VisionSensorIoRTC:1.0.0">
+			<rtsExt:Properties rtsExt:value="localhost/Turtlebot-VisionSensorIoRTC.rtc" rtsExt:name="COMPONENT_PATH_ID" />
 		</rts:targetDataPort>
-		<rtsExt:Properties rtsExt:value="IDL:RTC/TimedBooleanSeq:1.0" rtsExt:name="dataport.data_type" />
+		<rtsExt:Properties rtsExt:value="IDL:RTC/RangeData:1.0" rtsExt:name="dataport.data_type" />
 		<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
 		<rtsExt:Properties rtsExt:value="push" rtsExt:name="dataport.dataflow_type" />
 		<rtsExt:Properties rtsExt:value="flush" rtsExt:name="dataport.subscription_type" />
 		<rtsExt:Properties rtsExt:value="little,big" rtsExt:name="dataport.serializer.cdr.endian" />
-		<rtsExt:Properties rtsExt:value="{1:(436,259),2:(431,259),3:(371,259),4:(371,37),5:(311,37),6:(306,37)}" rtsExt:name="POSITION" />
+		<rtsExt:Properties rtsExt:value="{1:(196,310),2:(191,310),3:(191,0),4:(204,0),5:(204,64),6:(199,64)}" rtsExt:name="POSITION" />
 	</rts:DataPortConnectors>
-	<rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:connectorId="3777507b-a84f-440b-b2ba-cc07f584eb84" rts:name="Turtlebot-KobukiIoRTC.currentPose_KobukiController0.currentPose" rts:dataType="IDL:RTC/TimedPose2D:1.0" rts:interfaceType="corba_cdr" rts:dataflowType="push" rts:subscriptionType="flush">
+	<rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:connectorId="NoConnection_1" rts:name="Turtlebot-VisionSensorIoRTC.urg_NavigationManager0.range" rts:dataType="IDL:RTC/RangeData:1.0" rts:interfaceType="corba_cdr" rts:dataflowType="push" rts:subscriptionType="flush">
+		<rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Turtlebot-VisionSensorIoRTC.urg" rts:instanceName="Turtlebot-VisionSensorIoRTC" rts:componentId="RTC:Choreonoid:Generic:Turtlebot-VisionSensorIoRTC:1.0.0">
+			<rtsExt:Properties rtsExt:value="localhost/Turtlebot-VisionSensorIoRTC.rtc" rtsExt:name="COMPONENT_PATH_ID" />
+		</rts:sourceDataPort>
+		<rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="NavigationManager0.range" rts:instanceName="NavigationManager0" rts:componentId="RTC:Sugar Sweet Robotics:Navigation:NavigationManager0:1.0.2">
+			<rtsExt:Properties rtsExt:value="localhost/NavigationManager0.rtc" rtsExt:name="COMPONENT_PATH_ID" />
+		</rts:targetDataPort>
+		<rtsExt:Properties rtsExt:value="IDL:RTC/RangeData:1.0" rtsExt:name="dataport.data_type" />
+		<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
+		<rtsExt:Properties rtsExt:value="push" rtsExt:name="dataport.dataflow_type" />
+		<rtsExt:Properties rtsExt:value="flush" rtsExt:name="dataport.subscription_type" />
+		<rtsExt:Properties rtsExt:value="little,big" rtsExt:name="dataport.serializer.cdr.endian" />
+		<rtsExt:Properties rtsExt:value="{1:(150,55),2:(155,55),3:(168,55),4:(168,268),5:(179,268),6:(184,268)}" rtsExt:name="POSITION" />
+	</rts:DataPortConnectors>
+	<rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:connectorId="ef512e71-f36d-4f8b-a9d1-97f037386f2f" rts:name="Turtlebot-KobukiIoRTC.targetVelocity_NavigationManager0.targetVelocity" rts:dataType="IDL:RTC/TimedVelocity2D:1.0" rts:interfaceType="corba_cdr" rts:dataflowType="push" rts:subscriptionType="new">
+		<rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Turtlebot-KobukiIoRTC.targetVelocity" rts:instanceName="Turtlebot-KobukiIoRTC" rts:componentId="RTC:MasutaniLab:MobileRobot:Turtlebot-KobukiIoRTC:1.0">
+			<rtsExt:Properties rtsExt:value="localhost/Turtlebot-KobukiIoRTC.rtc" rtsExt:name="COMPONENT_PATH_ID" />
+		</rts:sourceDataPort>
+		<rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="NavigationManager0.targetVelocity" rts:instanceName="NavigationManager0" rts:componentId="RTC:Sugar Sweet Robotics:Navigation:NavigationManager0:1.0.2">
+			<rtsExt:Properties rtsExt:value="localhost/NavigationManager0.rtc" rtsExt:name="COMPONENT_PATH_ID" />
+		</rts:targetDataPort>
+		<rtsExt:Properties rtsExt:value="IDL:RTC/TimedVelocity2D:1.0" rtsExt:name="dataport.data_type" />
+		<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
+		<rtsExt:Properties rtsExt:value="push" rtsExt:name="dataport.dataflow_type" />
+		<rtsExt:Properties rtsExt:value="new" rtsExt:name="dataport.subscription_type" />
+		<rtsExt:Properties rtsExt:value="all" rtsExt:name="dataport.publisher.push_policy" />
+		<rtsExt:Properties rtsExt:value="little,big" rtsExt:name="dataport.serializer.cdr.endian" />
+		<rtsExt:Properties rtsExt:value="{1:(139,535),2:(134,535),3:(134,0),4:(414,0),5:(414,130),6:(409,130)}" rtsExt:name="POSITION" />
+	</rts:DataPortConnectors>
+	<rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:connectorId="1fd242a4-6734-48d8-ab81-966d791a178b" rts:name="Turtlebot-KobukiIoRTC.currentPose_Mapper_MRPT0.odometry" rts:dataType="IDL:RTC/TimedPose2D:1.0" rts:interfaceType="corba_cdr" rts:dataflowType="push" rts:subscriptionType="flush">
 		<rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Turtlebot-KobukiIoRTC.currentPose" rts:instanceName="Turtlebot-KobukiIoRTC" rts:componentId="RTC:MasutaniLab:MobileRobot:Turtlebot-KobukiIoRTC:1.0">
 			<rtsExt:Properties rtsExt:value="localhost/Turtlebot-KobukiIoRTC.rtc" rtsExt:name="COMPONENT_PATH_ID" />
 		</rts:sourceDataPort>
-		<rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="KobukiController0.currentPose" rts:instanceName="KobukiController0" rts:componentId="RTC:MasutaniLab:Mobile Robot:KobukiController0:1.0.0">
-			<rtsExt:Properties rtsExt:value="localhost/KobukiController0.rtc" rtsExt:name="COMPONENT_PATH_ID" />
+		<rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Mapper_MRPT0.odometry" rts:instanceName="Mapper_MRPT0" rts:componentId="RTC:ssr:Navigation:Mapper_MRPT0:1.0.2">
+			<rtsExt:Properties rtsExt:value="localhost/Mapper_MRPT0.rtc" rtsExt:name="COMPONENT_PATH_ID" />
 		</rts:targetDataPort>
 		<rtsExt:Properties rtsExt:value="IDL:RTC/TimedPose2D:1.0" rtsExt:name="dataport.data_type" />
 		<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
 		<rtsExt:Properties rtsExt:value="push" rtsExt:name="dataport.dataflow_type" />
 		<rtsExt:Properties rtsExt:value="flush" rtsExt:name="dataport.subscription_type" />
 		<rtsExt:Properties rtsExt:value="little,big" rtsExt:name="dataport.serializer.cdr.endian" />
-		<rtsExt:Properties rtsExt:value="{1:(306,19),2:(311,19),3:(371,19),4:(371,241),5:(431,241),6:(436,241)}" rtsExt:name="POSITION" />
+		<rtsExt:Properties rtsExt:value="{1:(199,535),2:(204,535),3:(204,0),4:(191,0),5:(191,328),6:(196,328)}" rtsExt:name="POSITION" />
 	</rts:DataPortConnectors>
-	<rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:connectorId="0543add6-30f9-4937-9ff4-81bb8b0ffc1c" rts:name="KobukiController0.targetVelocity_Turtlebot-KobukiIoRTC.targetVelocity" rts:dataType="IDL:RTC/TimedVelocity2D:1.0" rts:interfaceType="corba_cdr" rts:dataflowType="push" rts:subscriptionType="flush">
-		<rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="KobukiController0.targetVelocity" rts:instanceName="KobukiController0" rts:componentId="RTC:MasutaniLab:Mobile Robot:KobukiController0:1.0.0">
-			<rtsExt:Properties rtsExt:value="localhost/KobukiController0.rtc" rtsExt:name="COMPONENT_PATH_ID" />
+	<rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:connectorId="681750c7-c3fd-410d-9573-20032b5194e6" rts:name="Mapper_MRPT0.estimatedPose_NavigationManager0.currentPose" rts:dataType="IDL:RTC/TimedPose2D:1.0" rts:interfaceType="corba_cdr" rts:dataflowType="push" rts:subscriptionType="flush">
+		<rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Mapper_MRPT0.estimatedPose" rts:instanceName="Mapper_MRPT0" rts:componentId="RTC:ssr:Navigation:Mapper_MRPT0:1.0.2">
+			<rtsExt:Properties rtsExt:value="localhost/Mapper_MRPT0.rtc" rtsExt:name="COMPONENT_PATH_ID" />
 		</rts:sourceDataPort>
-		<rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Turtlebot-KobukiIoRTC.targetVelocity" rts:instanceName="Turtlebot-KobukiIoRTC" rts:componentId="RTC:MasutaniLab:MobileRobot:Turtlebot-KobukiIoRTC:1.0">
-			<rtsExt:Properties rtsExt:value="localhost/Turtlebot-KobukiIoRTC.rtc" rtsExt:name="COMPONENT_PATH_ID" />
+		<rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="NavigationManager0.currentPose" rts:instanceName="NavigationManager0" rts:componentId="RTC:Sugar Sweet Robotics:Navigation:NavigationManager0:1.0.2">
+			<rtsExt:Properties rtsExt:value="localhost/NavigationManager0.rtc" rtsExt:name="COMPONENT_PATH_ID" />
 		</rts:targetDataPort>
-		<rtsExt:Properties rtsExt:value="IDL:RTC/TimedVelocity2D:1.0" rtsExt:name="dataport.data_type" />
+		<rtsExt:Properties rtsExt:value="IDL:RTC/TimedPose2D:1.0" rtsExt:name="dataport.data_type" />
 		<rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type" />
 		<rtsExt:Properties rtsExt:value="push" rtsExt:name="dataport.dataflow_type" />
 		<rtsExt:Properties rtsExt:value="flush" rtsExt:name="dataport.subscription_type" />
 		<rtsExt:Properties rtsExt:value="little,big" rtsExt:name="dataport.serializer.cdr.endian" />
-		<rtsExt:Properties rtsExt:value="{1:(496,241),2:(501,241),3:(501,161),4:(241,161),5:(241,19),6:(246,19)}" rtsExt:name="POSITION" />
+		<rtsExt:Properties rtsExt:value="{1:(256,310),2:(261,310),3:(302.5,310),4:(302.5,130),5:(344,130),6:(349,130)}" rtsExt:name="POSITION" />
 	</rts:DataPortConnectors>
+	<rts:ServicePortConnectors xsi:type="rtsExt:serviceport_connector_ext" rts:connectorId="6146bb34-beb5-4c87-b859-10f4e5162e4f" rts:name="Mapper_MRPT0.gridMapper_NavigationManager0.mapperService">
+		<rts:sourceServicePort xsi:type="rtsExt:target_port_ext" rts:portName="Mapper_MRPT0.gridMapper" rts:instanceName="Mapper_MRPT0" rts:componentId="RTC:ssr:Navigation:Mapper_MRPT0:1.0.2">
+			<rtsExt:Properties rtsExt:value="localhost/Mapper_MRPT0.rtc" rtsExt:name="COMPONENT_PATH_ID" />
+		</rts:sourceServicePort>
+		<rts:targetServicePort xsi:type="rtsExt:target_port_ext" rts:portName="NavigationManager0.mapperService" rts:instanceName="NavigationManager0" rts:componentId="RTC:Sugar Sweet Robotics:Navigation:NavigationManager0:1.0.2">
+			<rtsExt:Properties rtsExt:value="localhost/NavigationManager0.rtc" rtsExt:name="COMPONENT_PATH_ID" />
+		</rts:targetServicePort>
+	</rts:ServicePortConnectors>
 </rts:RtsProfile>
