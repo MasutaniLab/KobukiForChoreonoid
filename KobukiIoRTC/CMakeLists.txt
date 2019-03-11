@@ -72,8 +72,8 @@ function(add_cnoid_body_io_rtc)
   endif()
 
   install(TARGETS ${target}
-    RUNTIME DESTINATION ${CNOID_PLUGIN_SUBDIR}/rtc CONFIGURATIONS Release Debug
-    LIBRARY DESTINATION ${CNOID_PLUGIN_SUBDIR}/rtc CONFIGURATIONS Release Debug)
+    RUNTIME DESTINATION ${PROJECT_BINARY_DIR}/rtc CONFIGURATIONS Release Debug
+    LIBRARY DESTINATION ${PROJECT_BINARY_DIR}/rtc CONFIGURATIONS Release Debug)
 endfunction()
 
 add_cnoid_body_io_rtc(KobukiIoRTC KobukiIoRTC.cpp)
