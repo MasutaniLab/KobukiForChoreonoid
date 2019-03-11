@@ -1,9 +1,10 @@
 //情報システム実験「ロボットプログラミング」
 //2016/6/8 升谷 保博
 #pragma once
+#define ISE_ROBOT_SOURCE "test.cpp"
 //#define ISE_ROBOT_SOURCE "example0.cpp"
 //#define ISE_ROBOT_SOURCE "example1.cpp"
-#define ISE_ROBOT_SOURCE "example2.cpp"
+//#define ISE_ROBOT_SOURCE "example2.cpp"
 //#define ISE_ROBOT_SOURCE "kadai1.cpp"
 //#define ISE_ROBOT_SOURCE "kadai2.cpp"
 
