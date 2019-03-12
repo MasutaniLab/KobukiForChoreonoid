@@ -12,7 +12,7 @@ items:
       data: 
         collisionDetection: false
         collisionDetector: AISTCollisionDetector
-        materialTableFile: "${SHARE}/default/materials.yaml"
+        materialTableFile: "${PROJECT_DIR}/materials.yaml"
       children: 
         - 
           id: 2
@@ -22,18 +22,18 @@ items:
           data: 
             modelFile: "${PROJECT_DIR}/model/turtlebot.body"
             currentBaseLink: "base_footprint"
-            rootPosition: [ 0, 0, 0 ]
+            rootPosition: [ 0.000738856165, 0.00112908017, -0.000606953855 ]
             rootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
-            jointPositions: [ -6.470488,  6.810903 ]
+              0.993624329, 0.111681809, -0.0154229043, 
+              -0.111675853, 0.993743902, 0.00124954781, 
+              0.0154659688, 0.000480784896, 0.999880279 ]
+            jointPositions: [  61.491932, -61.500917,  0.014137,  0.005985 ]
             initialRootPosition: [ 0, 0, 0 ]
             initialRootAttitude: [ 
               1, 0, 0, 
               0, 1, 0, 
               0, 0, 1 ]
-            initialJointPositions: [  0.000000,  0.000000 ]
+            initialJointPositions: [  0.000000,  0.000000,  0.000000,  0.000000 ]
             zmp: [ 0, 0, 0 ]
             collisionDetection: true
             selfCollisionDetection: false
@@ -76,29 +76,6 @@ items:
             isEditable: false
         - 
           id: 5
-          name: "Wall"
-          plugin: Body
-          class: BodyItem
-          data: 
-            modelFile: "${PROJECT_DIR}/wall.body"
-            currentBaseLink: "Wall"
-            rootPosition: [ 0, 0, 0 ]
-            rootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
-            jointPositions: [  ]
-            initialRootPosition: [ 0, 0, 0 ]
-            initialRootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
-            zmp: [ 0, 0, 0 ]
-            collisionDetection: true
-            selfCollisionDetection: false
-            isEditable: false
-        - 
-          id: 6
           name: "AISTSimulator"
           plugin: Body
           class: AISTSimulatorItem
@@ -127,6 +104,29 @@ items:
             kinematicWalking: false
             2Dmode: false
             oldAccelSensorMode: false
+        - 
+          id: 6
+          name: "Wall"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROJECT_DIR}/wall.body"
+            currentBaseLink: "Wall"
+            rootPosition: [ 0, 0, 0 ]
+            rootAttitude: [ 
+              1, 0, 0, 
+              0, 1, 0, 
+              0, 0, 1 ]
+            jointPositions: [  ]
+            initialRootPosition: [ 0, 0, 0 ]
+            initialRootAttitude: [ 
+              1, 0, 0, 
+              0, 1, 0, 
+              0, 0, 1 ]
+            zmp: [ 0, 0, 0 ]
+            collisionDetection: true
+            selfCollisionDetection: false
+            isEditable: false
         - 
           id: 7
           name: "Box 1"
@@ -257,6 +257,7 @@ items:
 views: 
   - 
     id: 0
+    name: "General Sliders"
     plugin: Base
     class: GeneralSliderView
   - 
@@ -270,9 +271,9 @@ views:
     class: ItemTreeView
     mounted: true
     state: 
-      selected: [ 7 ]
-      checked: [ 1, 2, 4, 5, 7, 8, 9, 10, 11 ]
-      expanded: [ 1, 2, 3, 7 ]
+      selected: [ 1 ]
+      checked: [ 1, 2, 4, 6, 7, 8, 9, 10 ]
+      expanded: [ 1, 2, 3 ]
   - 
     id: 3
     plugin: Base
@@ -323,9 +324,9 @@ views:
           fieldOfView: 0.6978
           near: 0.01
           far: 100
-          eye: [ 0.995549123, -3.49655062, 3.15831631 ]
-          direction: [ -0.00385359481, 0.867143518, -0.498043441 ]
-          up: [ -0.00221328838, 0.498038523, 0.867152081 ]
+          eye: [ 1.03746252, -3.48895442, 3.15831631 ]
+          direction: [ -0.0125246926, 0.867061626, -0.498043441 ]
+          up: [ -0.00719347983, 0.497991489, 0.867152081 ]
         - 
           camera: [ System, Orthographic ]
           orthoHeight: 20
@@ -355,8 +356,8 @@ views:
       numColumns: 1
       spinBox: true
       slider: true
+      dial: false
       labelOnLeft: true
-      currentBodyItem: 7
   - 
     id: 7
     plugin: Body
@@ -364,7 +365,6 @@ views:
     mounted: true
     state: 
       listingMode: "Link List"
-      currentBodyItem: 7
   - 
     id: 8
     name: "RTC Diagram"
@@ -390,16 +390,6 @@ views:
     class: PythonConsoleView
     mounted: true
 toolbars: 
-  "TimeBar": 
-    minTime: 0
-    maxTime: 97.99
-    frameRate: 100
-    playbackFrameRate: 50
-    idleLoopDrivenMode: false
-    currentTime: 48.23
-    speedScale: 1
-    syncToOngoingUpdates: true
-    autoExpansion: true
   "KinematicsBar": 
     mode: AUTO
     enablePositionDragger: true
@@ -408,10 +398,18 @@ toolbars:
     snapDistance: 0.025
     penetrationBlockDepth: 0.0005
     lazyCollisionDetectionMode: true
-  "BodyBar": 
-    current: 7
   "LeggedBodyBar": 
     stanceWidth: 0.15
+  "TimeBar": 
+    minTime: 0
+    maxTime: 116.66
+    frameRate: 100
+    playbackFrameRate: 50
+    idleLoopDrivenMode: false
+    currentTime: 77.59
+    speedScale: 1
+    syncToOngoingUpdates: true
+    autoExpansion: true
   "BodyMotionGenerationBar": 
     autoGenerationForNewBody: true
     balancer: false
@@ -461,7 +459,7 @@ Body:
         showPpcom: false
         showZmp: false
       - 
-        bodyItem: 5
+        bodyItem: 6
         showCenterOfMass: false
         showPpcom: false
         showZmp: false
@@ -482,11 +480,6 @@ Body:
         showZmp: false
       - 
         bodyItem: 10
-        showCenterOfMass: false
-        showPpcom: false
-        showZmp: false
-      - 
-        bodyItem: 11
         showCenterOfMass: false
         showPpcom: false
         showZmp: false
@@ -537,7 +530,7 @@ viewAreas:
             - 
               type: splitter
               orientation: horizontal
-              sizes: [ 529, 865 ]
+              sizes: [ 628, 766 ]
               children: 
                 - 
                   type: pane

@@ -27,13 +27,13 @@ items:
               0.993624329, 0.111681809, -0.0154229043, 
               -0.111675853, 0.993743902, 0.00124954781, 
               0.0154659688, 0.000480784896, 0.999880279 ]
-            jointPositions: [  61.491932, -61.500917 ]
+            jointPositions: [  61.491932, -61.500917,  0.014137,  0.005985 ]
             initialRootPosition: [ 0, 0, 0 ]
             initialRootAttitude: [ 
               1, 0, 0, 
               0, 1, 0, 
               0, 0, 1 ]
-            initialJointPositions: [  0.000000,  0.000000 ]
+            initialJointPositions: [  0.000000,  0.000000,  0.000000,  0.000000 ]
             zmp: [ 0, 0, 0 ]
             collisionDetection: true
             selfCollisionDetection: false
@@ -104,8 +104,31 @@ items:
             kinematicWalking: false
             2Dmode: false
             oldAccelSensorMode: false
+        - 
+          id: 6
+          name: "Wall"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROJECT_DIR}/wall.body"
+            currentBaseLink: "Wall"
+            rootPosition: [ 0, 0, 0 ]
+            rootAttitude: [ 
+              1, 0, 0, 
+              0, 1, 0, 
+              0, 0, 1 ]
+            jointPositions: [  ]
+            initialRootPosition: [ 0, 0, 0 ]
+            initialRootAttitude: [ 
+              1, 0, 0, 
+              0, 1, 0, 
+              0, 0, 1 ]
+            zmp: [ 0, 0, 0 ]
+            collisionDetection: true
+            selfCollisionDetection: false
+            isEditable: false
     - 
-      id: 6
+      id: 7
       name: "Marks"
       plugin: Body
       class: BodyItem
@@ -128,7 +151,7 @@ items:
         selfCollisionDetection: false
         isEditable: false
     - 
-      id: 7
+      id: 8
       name: "RTSystem"
       plugin: OpenRTM
       class: RTSystemItem
@@ -156,7 +179,8 @@ views:
     class: ItemTreeView
     mounted: true
     state: 
-      checked: [ 1, 2, 4, 6 ]
+      selected: [ 1 ]
+      checked: [ 1, 2, 4, 6, 7 ]
       expanded: [ 1, 2, 3 ]
   - 
     id: 3
@@ -256,7 +280,7 @@ views:
     class: RTSDiagramView
     mounted: true
     state: 
-      currentRTSItem: 7
+      currentRTSItem: 8
   - 
     id: 9
     plugin: OpenRTM
@@ -274,16 +298,6 @@ views:
     class: PythonConsoleView
     mounted: true
 toolbars: 
-  "KinematicsBar": 
-    mode: AUTO
-    enablePositionDragger: true
-    penetrationBlock: false
-    collisionLinkHighlight: false
-    snapDistance: 0.025
-    penetrationBlockDepth: 0.0005
-    lazyCollisionDetectionMode: true
-  "LeggedBodyBar": 
-    stanceWidth: 0.15
   "BodyMotionGenerationBar": 
     autoGenerationForNewBody: true
     balancer: false
@@ -327,6 +341,16 @@ toolbars:
     speedScale: 1
     syncToOngoingUpdates: true
     autoExpansion: true
+  "KinematicsBar": 
+    mode: AUTO
+    enablePositionDragger: true
+    penetrationBlock: false
+    collisionLinkHighlight: false
+    snapDistance: 0.025
+    penetrationBlockDepth: 0.0005
+    lazyCollisionDetectionMode: true
+  "LeggedBodyBar": 
+    stanceWidth: 0.15
 Body: 
   "BodyMotionEngine": 
     updateJointVelocities: false
@@ -344,6 +368,11 @@ Body:
         showZmp: false
       - 
         bodyItem: 6
+        showCenterOfMass: false
+        showPpcom: false
+        showZmp: false
+      - 
+        bodyItem: 7
         showCenterOfMass: false
         showPpcom: false
         showZmp: false
@@ -371,12 +400,12 @@ viewAreas:
     contents: 
       type: splitter
       orientation: horizontal
-      sizes: [ 513, 1402 ]
+      sizes: [ 512, 1401 ]
       children: 
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 453, 452 ]
+          sizes: [ 475, 473 ]
           children: 
             - 
               type: pane
@@ -389,12 +418,12 @@ viewAreas:
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 645, 260 ]
+          sizes: [ 676, 272 ]
           children: 
             - 
               type: splitter
               orientation: horizontal
-              sizes: [ 629, 768 ]
+              sizes: [ 628, 766 ]
               children: 
                 - 
                   type: pane

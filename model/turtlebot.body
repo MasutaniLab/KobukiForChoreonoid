@@ -220,19 +220,6 @@ links:
                   height: 0.10938
           -
             type: Transform
-            translation: [-0.135, 0.0, 0.0192]
-            rotation: [0, 1, 0, 0]
-            elements:
-              Shape:
-                geometry:
-                  type: Cylinder
-                  radius: 0.017
-                  height: 0.001
-                appearance:
-                  material:
-                    diffuseColor: [0, 0, 1]
-          -
-            type: Transform
             translation: [0.12, 0.082, 0.113]
             rotation: [1.0, -0.0, -0.0, 90]
             elements:
@@ -241,19 +228,6 @@ links:
                   type: Cylinder
                   radius: 0.006
                   height: 0.0492
-          -
-            type: Transform
-            translation: [0.115, 0, 0.0172]
-            rotation: [0, 1, 0, 0]
-            elements:
-              Shape:
-                geometry:
-                  type: Cylinder
-                  radius: 0.017
-                  height: 0.001
-                appearance:
-                  material:
-                    diffuseColor: [0, 0, 1]
           -
             type: Transform
             translation: [0, 0, 0.1408]
@@ -510,6 +484,64 @@ links:
                 appearance:
                   material:
                     diffuseColor: [1, 0, 0]
+  -
+    name: caster_wheel_front
+    parent: base_footprint
+    jointType: revolute
+    jointAxis: [0, 0, 1]
+    jointId: 2
+    translation:  [0.115, 0, 0.0172]
+    rotation: [-1.0, 0.0, 0.0, 90]
+    mass: 0.01
+    centerOfMass: [0.0, 0.0, 0.0]
+    inertia: [
+      0.001, 0.0, 0.0,
+      0.0, 0.001, 0.0,
+      0.0, 0.0, 0.001]
+    material: CasterWheel
+    elements:
+      Transform:
+        scale: [1.0, 1.0, 1.0]
+        translation: [0.0, 0.0, 0.0]
+        rotation: [1.0, 0.0, 0.0, 90]
+        elements:
+          Shape:
+            geometry:
+              type: Cylinder
+              radius: 0.017
+              height: 0.015
+            appearance:
+              material:
+                diffuseColor: [0, 1, 0]
+  -
+    name: caster_wheel_back
+    parent: base_footprint
+    jointType: revolute
+    jointAxis: [0, 0, 1]
+    jointId: 3
+    translation:  [-0.135, 0, 0.0192]
+    rotation: [-1.0, 0.0, 0.0, 90]
+    mass: 0.01
+    centerOfMass: [0.0, 0.0, 0.0]
+    inertia: [
+      0.001, 0.0, 0.0,
+      0.0, 0.001, 0.0,
+      0.0, 0.0, 0.001]
+    material: CasterWheel
+    elements:
+      Transform:
+        scale: [1.0, 1.0, 1.0]
+        translation: [0.0, 0.0, 0.0]
+        rotation: [1.0, 0.0, 0.0, 90]
+        elements:
+          Shape:
+            geometry:
+              type: Cylinder
+              radius: 0.017
+              height: 0.015
+            appearance:
+              material:
+                diffuseColor: [0, 1, 0]
   -
     name: clink
     parent: base_footprint
