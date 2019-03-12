@@ -22,12 +22,12 @@ items:
           data: 
             modelFile: "${PROJECT_DIR}/model/turtlebot+caster.body"
             currentBaseLink: "base_footprint"
-            rootPosition: [ 0, 0, 0 ]
+            rootPosition: [ 0.000738856165, 0.00112908017, -0.000606953855 ]
             rootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
-            jointPositions: [  200.040640,  198.034909,  0.000000,  0.000000 ]
+              0.993624329, 0.111681809, -0.0154229043, 
+              -0.111675853, 0.993743902, 0.00124954781, 
+              0.0154659688, 0.000480784896, 0.999880279 ]
+            jointPositions: [  61.491932, -61.500917,  0.014137,  0.005985 ]
             initialRootPosition: [ 0, 0, 0 ]
             initialRootAttitude: [ 
               1, 0, 0, 
@@ -76,29 +76,6 @@ items:
             isEditable: false
         - 
           id: 5
-          name: "Wall"
-          plugin: Body
-          class: BodyItem
-          data: 
-            modelFile: "${PROJECT_DIR}/wall.body"
-            currentBaseLink: "Wall"
-            rootPosition: [ 0, 0, 0 ]
-            rootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
-            jointPositions: [  ]
-            initialRootPosition: [ 0, 0, 0 ]
-            initialRootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
-            zmp: [ 0, 0, 0 ]
-            collisionDetection: true
-            selfCollisionDetection: false
-            isEditable: false
-        - 
-          id: 6
           name: "AISTSimulator"
           plugin: Body
           class: AISTSimulatorItem
@@ -128,7 +105,7 @@ items:
             2Dmode: false
             oldAccelSensorMode: false
     - 
-      id: 7
+      id: 6
       name: "Marks"
       plugin: Body
       class: BodyItem
@@ -151,7 +128,7 @@ items:
         selfCollisionDetection: false
         isEditable: false
     - 
-      id: 8
+      id: 7
       name: "RTSystem"
       plugin: OpenRTM
       class: RTSystemItem
@@ -179,8 +156,7 @@ views:
     class: ItemTreeView
     mounted: true
     state: 
-      selected: [ 2 ]
-      checked: [ 1, 2, 4, 5, 7 ]
+      checked: [ 1, 2, 4, 6 ]
       expanded: [ 1, 2, 3 ]
   - 
     id: 3
@@ -266,7 +242,6 @@ views:
       slider: true
       dial: false
       labelOnLeft: true
-      currentBodyItem: 2
   - 
     id: 7
     plugin: Body
@@ -274,7 +249,6 @@ views:
     mounted: true
     state: 
       listingMode: "Link List"
-      currentBodyItem: 2
   - 
     id: 8
     name: "RTC Diagram"
@@ -282,7 +256,7 @@ views:
     class: RTSDiagramView
     mounted: true
     state: 
-      currentRTSItem: 8
+      currentRTSItem: 7
   - 
     id: 9
     plugin: OpenRTM
@@ -306,7 +280,7 @@ toolbars:
     frameRate: 100
     playbackFrameRate: 50
     idleLoopDrivenMode: false
-    currentTime: 116.66
+    currentTime: 77.6
     speedScale: 1
     syncToOngoingUpdates: true
     autoExpansion: true
@@ -318,8 +292,6 @@ toolbars:
     snapDistance: 0.025
     penetrationBlockDepth: 0.0005
     lazyCollisionDetectionMode: true
-  "BodyBar": 
-    current: 2
   "LeggedBodyBar": 
     stanceWidth: 0.15
   "BodyMotionGenerationBar": 
@@ -371,12 +343,7 @@ Body:
         showPpcom: false
         showZmp: false
       - 
-        bodyItem: 5
-        showCenterOfMass: false
-        showPpcom: false
-        showZmp: false
-      - 
-        bodyItem: 7
+        bodyItem: 6
         showCenterOfMass: false
         showPpcom: false
         showZmp: false
@@ -404,12 +371,12 @@ viewAreas:
     contents: 
       type: splitter
       orientation: horizontal
-      sizes: [ 513, 1402 ]
+      sizes: [ 512, 1401 ]
       children: 
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 453, 452 ]
+          sizes: [ 475, 473 ]
           children: 
             - 
               type: pane
@@ -422,12 +389,12 @@ viewAreas:
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 645, 260 ]
+          sizes: [ 676, 272 ]
           children: 
             - 
               type: splitter
               orientation: horizontal
-              sizes: [ 629, 768 ]
+              sizes: [ 628, 766 ]
               children: 
                 - 
                   type: pane
