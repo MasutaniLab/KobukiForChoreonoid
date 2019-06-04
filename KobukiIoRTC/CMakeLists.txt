@@ -60,20 +60,9 @@ function(add_cnoid_body_io_rtc)
     add_compile_options(${OPENRTM_CFLAGS})
   endif()
 
-  set_target_properties(${target} PROPERTIES
-    LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/rtc
-    PREFIX ""
-    LIBRARY_OUTPUT_DIRECTORY_RELEASE ${PROJECT_BINARY_DIR}/rtc
-    LIBRARY_OUTPUT_DIRECTORY_DEBUG ${PROJECT_BINARY_DIR}/rtc
-	)
- 
-  if(ENABLE_INSTALL_RPATH)
-    set_target_properties(${target} PROPERTIES INSTALL_RPATH "$ORIGIN/../..")
-  endif()
-
   install(TARGETS ${target}
-    RUNTIME DESTINATION ${PROJECT_BINARY_DIR}/rtc CONFIGURATIONS Release Debug
-    LIBRARY DESTINATION ${PROJECT_BINARY_DIR}/rtc CONFIGURATIONS Release Debug)
+    RUNTIME DESTINATION ${PROJECT_SOURCE_DIR}/rtc CONFIGURATIONS Release Debug
+    LIBRARY DESTINATION ${PROJECT_SOURCE_DIR}/rtc CONFIGURATIONS Release Debug)
 endfunction()
 
 add_cnoid_body_io_rtc(KobukiIoRTC KobukiIoRTC.cpp)

@@ -1,7 +1,7 @@
 contactMaterials:
   -
-    materials: [ Default, Default ]
+    materials: [ Floor, Default ]
     friction: 1.0
   -
-    materials: [ CasterWheel, Default ]
-    friction: 1.0 
+    materials: [ Floor, CasterWheel ]
+    friction: 0.0

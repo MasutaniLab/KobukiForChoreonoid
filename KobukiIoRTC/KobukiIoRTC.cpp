@@ -65,7 +65,7 @@ private:
     double m_sumFy;
     int m_sumC;
 
-    const double OutputDt = 0.01;       //[sec]
+    const double OutputDt = 1.0/30;     //[sec]
     const double Dt = 0.002;            //[sec]
     const double WheelRadius = 0.0352;  //[m]
     const double WheelDistance = 0.115; //[m]
@@ -263,8 +263,8 @@ void KobukiIoRTC::inputFromSimulator()
   const double tconst = 0.1;      //[s]
   const double kp =
       3.0 * mass * WheelRadius * WheelRadius / tconst;  //比例ゲイン
-  const double ki = 2.0 * kp;
-  const double compensation = 0.2;
+  const double ki = 0.5 * kp;
+  const double compensation = 0.0;
   double fR, fL;
   fR = sign(wRTarget) * compensation;
   fL = sign(wLTarget) * compensation;

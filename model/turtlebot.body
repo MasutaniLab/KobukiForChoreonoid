@@ -22,6 +22,7 @@ links:
       -
         type: Camera
         name: realsense
+        on: false
         translation: [ -0.15, 0.0, 0.30 ]
         rotation: [ [ 1, 0, 0, 90 ], [ 0, 1, 0, -90 ] ]
         format: COLOR_DEPTH

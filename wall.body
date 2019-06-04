@@ -11,13 +11,13 @@ links:
     elements:
       -
         type: Transform
-        translation: [-0.5, 2, 0.1]
+        translation: [-0.5, 2, 0.225]
         rotation: [0, 0, 1, 90]
         elements:           
           Shape:
             geometry: 
               type: Box
-              size: [4.5, 0.1, 0.2] 
+              size: [4.5, 0.01, 0.45] 
             appearance: 
               material:
                 ambientIntensity: 0.2
@@ -25,13 +25,13 @@ links:
                 shininess: 0.2
       -
         type: Transform
-        translation: [1, 4.25, 0.1]
+        translation: [1.15, 4.25, 0.225]
         rotation: [0, 0, 1, 0]
         elements:           
           Shape:
             geometry: 
               type: Box
-              size: [3, 0.1, 0.2] 
+              size: [3.3, 0.01, 0.45] 
             appearance: 
               material:
                 ambientIntensity: 0.2
@@ -39,13 +39,13 @@ links:
                 shininess: 0.2
       -
         type: Transform
-        translation: [2.5, 2, 0.1]
+        translation: [2.8, 2, 0.225]
         rotation: [0, 0, 1, 90]
         elements:           
           Shape:
             geometry: 
               type: Box
-              size: [4.5, 0.1, 0.2] 
+              size: [4.5, 0.01, 0.45] 
             appearance: 
               material:
                 ambientIntensity: 0.2
