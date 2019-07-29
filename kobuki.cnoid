@@ -20,14 +20,14 @@ items:
           plugin: Body
           class: BodyItem
           data: 
-            modelFile: "${PROJECT_DIR}/model/turtlebot.body"
+            modelFile: "${PROJECT_DIR}/model/turtlebot.yaml"
             currentBaseLink: "base_footprint"
-            rootPosition: [ 0.000613512516, 5.6169792e-06, -0.000495364335 ]
+            rootPosition: [ 0.00032743772, 4.67024879e-06, -0.00049560902 ]
             rootAttitude: [ 
-              0.999866933, 4.62344343e-06, -0.0163130521, 
-              -4.62294318e-06, 1, 6.83754776e-08, 
-              0.0163130521, 7.04793376e-09, 0.999866933 ]
-            jointPositions: [  0.018115,  0.017963,  0.016314,  0.011600 ]
+              0.999857799, -0.000115863766, -0.0168632444, 
+              0.000115851535, 0.999999993, -1.70221163e-06, 
+              0.0168632445, -2.5166317e-07, 0.999857805 ]
+            jointPositions: [  0.010603,  0.010399,  0.016876, -0.014754 ]
             initialRootPosition: [ 0, 0, 0 ]
             initialRootAttitude: [ 
               1, 0, 0, 
@@ -41,30 +41,18 @@ items:
           children: 
             - 
               id: 3
-              name: "BodyIoRTC"
+              name: "KobukiIoRTC"
               plugin: OpenRTM
               class: BodyIoRTCItem
               data: 
                 isNoDelayMode: false
                 controllerOptions: ""
-                module: "${PROJECT_DIR}/KobukiIoRTC/rtc/KobukiIoRTC.dll"
+                module: "${PROJECT_DIR}/KobukiIoRTC/rtc/KobukiIoRTC"
                 baseDirectory: "Project directory"
                 instanceName: ""
                 periodicRate: 0
-            - 
-              id: 4
-              name: "VisionSensorIoRTC"
-              plugin: OpenRTM
-              class: BodyIoRTCItem
-              data: 
-                isNoDelayMode: false
-                controllerOptions: ""
-                module: "VisionSensorIoRTC.dll"
-                baseDirectory: "RTC directory"
-                instanceName: ""
-                periodicRate: 0
         - 
-          id: 5
+          id: 4
           name: "Floor"
           plugin: Body
           class: BodyItem
@@ -87,7 +75,7 @@ items:
             selfCollisionDetection: false
             isEditable: false
         - 
-          id: 6
+          id: 5
           name: "AISTSimulator"
           plugin: Body
           class: AISTSimulatorItem
@@ -116,27 +104,8 @@ items:
             kinematicWalking: false
             2Dmode: false
             oldAccelSensorMode: false
-          children: 
-            - 
-              id: 7
-              name: "GLVisionSimulator"
-              plugin: Body
-              class: GLVisionSimulatorItem
-              data: 
-                enabled: true
-                maxFrameRate: 1000
-                maxLatency: 1
-                recordVisionData: false
-                threadMode: Sensor
-                bestEffort: false
-                allSceneObjects: false
-                rangeSensorPrecisionRatio: 2
-                depthError: 0
-                enableHeadLight: true
-                enableAdditionalLights: true
-                antiAliasing: false
         - 
-          id: 8
+          id: 6
           name: "Wall"
           plugin: Body
           class: BodyItem
@@ -159,7 +128,7 @@ items:
             selfCollisionDetection: false
             isEditable: false
     - 
-      id: 9
+      id: 7
       name: "Marks"
       plugin: Body
       class: BodyItem
@@ -198,8 +167,8 @@ views:
     class: ItemTreeView
     mounted: true
     state: 
-      checked: [ 1, 2, 5, 8, 9 ]
-      expanded: [ 1, 2, 3, 6 ]
+      checked: [ 1, 2, 4, 6, 7 ]
+      expanded: [ 1, 2, 3 ]
   - 
     id: 3
     plugin: Base
@@ -284,7 +253,6 @@ views:
       slider: true
       dial: false
       labelOnLeft: true
-      currentBodyItem: 2
   - 
     id: 7
     plugin: Body
@@ -292,7 +260,6 @@ views:
     mounted: true
     state: 
       listingMode: "Link List"
-      currentBodyItem: 2
   - 
     id: 8
     name: "RTC Diagram"
@@ -320,7 +287,7 @@ toolbars:
     frameRate: 100
     playbackFrameRate: 50
     idleLoopDrivenMode: false
-    currentTime: 39.28
+    currentTime: 9.76
     speedScale: 1
     syncToOngoingUpdates: true
     autoExpansion: true
@@ -334,8 +301,6 @@ toolbars:
     lazyCollisionDetectionMode: true
   "LeggedBodyBar": 
     stanceWidth: 0.15
-  "BodyBar": 
-    current: 2
   "BodyMotionGenerationBar": 
     autoGenerationForNewBody: true
     balancer: false
@@ -380,17 +345,17 @@ Body:
         showPpcom: false
         showZmp: false
       - 
-        bodyItem: 5
+        bodyItem: 4
         showCenterOfMass: false
         showPpcom: false
         showZmp: false
       - 
-        bodyItem: 8
+        bodyItem: 6
         showCenterOfMass: false
         showPpcom: false
         showZmp: false
       - 
-        bodyItem: 9
+        bodyItem: 7
         showCenterOfMass: false
         showPpcom: false
         showZmp: false
@@ -441,7 +406,7 @@ viewAreas:
             - 
               type: splitter
               orientation: horizontal
-              sizes: [ 453, 944 ]
+              sizes: [ 629, 768 ]
               children: 
                 - 
                   type: pane
