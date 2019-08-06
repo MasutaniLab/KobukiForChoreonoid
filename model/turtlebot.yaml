@@ -1,0 +1,3 @@
+modelFile: "turtlebot.body"
+geometry:
+  divisionNumber: 100
