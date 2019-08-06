@@ -29,8 +29,8 @@
 - `KobukiIoRTC`と接続するRTコンポーネントの例
   - ディレクトリ `KobukiController`
 - Choreonoidのプロジェクトファイル
-  - `kobuki.cnoid` （障害物なし）
-  - `kobuki+boxes.cnoid` （障害物あり）
+  - `kobuki.cnoid` （障害物なし，VisionSensorIoRTC不使用）
+  - `kobuki+boxes.cnoid` （障害物あり，VisionSensorIoRTC使用）
 
 ## インストール
 
