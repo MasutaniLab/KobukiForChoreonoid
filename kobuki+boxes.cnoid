@@ -22,12 +22,12 @@ items:
           data: 
             modelFile: "${PROJECT_DIR}/model/turtlebot.yaml"
             currentBaseLink: "base_footprint"
-            rootPosition: [ 0.000738856165, 0.00112908017, -0.000606953855 ]
+            rootPosition: [ 0.000314097327, -6.57711196e-08, -0.000495950694 ]
             rootAttitude: [ 
-              0.993624329, 0.111681809, -0.0154229043, 
-              -0.111675853, 0.993743902, 0.00124954781, 
-              0.0154659688, 0.000480784896, 0.999880279 ]
-            jointPositions: [  61.491932, -61.500917,  0.014137,  0.005985 ]
+              0.999865258, 1.33960336e-05, -0.0164153858, 
+              -1.33914985e-05, 1, 3.86197568e-07, 
+              0.0164153858, -1.66318918e-07, 0.999865258 ]
+            jointPositions: [  0.009791,  0.009852,  0.016418, -0.008839 ]
             initialRootPosition: [ 0, 0, 0 ]
             initialRootAttitude: [ 
               1, 0, 0, 
@@ -51,8 +51,20 @@ items:
                 baseDirectory: "Project directory"
                 instanceName: ""
                 periodicRate: 0
+            - 
+              id: 4
+              name: "VisionSensorIoRTC"
+              plugin: OpenRTM
+              class: BodyIoRTCItem
+              data: 
+                isNoDelayMode: false
+                controllerOptions: ""
+                module: "VisionSensorIoRTC.dll"
+                baseDirectory: "RTC directory"
+                instanceName: ""
+                periodicRate: 0
         - 
-          id: 4
+          id: 5
           name: "Floor"
           plugin: Body
           class: BodyItem
@@ -75,7 +87,7 @@ items:
             selfCollisionDetection: false
             isEditable: false
         - 
-          id: 5
+          id: 6
           name: "AISTSimulator"
           plugin: Body
           class: AISTSimulatorItem
@@ -104,8 +116,27 @@ items:
             kinematicWalking: false
             2Dmode: false
             oldAccelSensorMode: false
+          children: 
+            - 
+              id: 7
+              name: "GLVisionSimulator"
+              plugin: Body
+              class: GLVisionSimulatorItem
+              data: 
+                enabled: true
+                maxFrameRate: 1000
+                maxLatency: 1
+                recordVisionData: false
+                threadMode: Sensor
+                bestEffort: false
+                allSceneObjects: false
+                rangeSensorPrecisionRatio: 2
+                depthError: 0
+                enableHeadLight: true
+                enableAdditionalLights: true
+                antiAliasing: false
         - 
-          id: 6
+          id: 8
           name: "Wall"
           plugin: Body
           class: BodyItem
@@ -128,18 +159,18 @@ items:
             selfCollisionDetection: false
             isEditable: false
         - 
-          id: 7
+          id: 9
           name: "Box 1"
           plugin: Body
           class: BodyItem
           data: 
             modelFile: "${PROJECT_DIR}/box.body"
             currentBaseLink: "Box"
-            rootPosition: [ 0.2, 0.7, 0 ]
+            rootPosition: [ 0.199999998, 0.700000044, -0.000499569566 ]
             rootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
+              1, 8.16555813e-08, 8.43413764e-07, 
+              -8.16555351e-08, 1, -5.48347146e-08, 
+              -8.43413768e-07, 5.48346458e-08, 1 ]
             jointPositions: [  ]
             initialRootPosition: [ 0.2, 0.7, 0 ]
             initialRootAttitude: [ 
@@ -151,18 +182,18 @@ items:
             selfCollisionDetection: false
             isEditable: true
         - 
-          id: 8
+          id: 10
           name: "Box 2"
           plugin: Body
           class: BodyItem
           data: 
             modelFile: "${PROJECT_DIR}/box.body"
             currentBaseLink: "Box"
-            rootPosition: [ 1, 1.5, 0 ]
+            rootPosition: [ 0.999999996, 1.50000005, -0.000499393107 ]
             rootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
+              1, 8.40038222e-08, 1.06699747e-06, 
+              -8.40040004e-08, 1, 1.67006884e-07, 
+              -1.06699745e-06, -1.67006974e-07, 1 ]
             jointPositions: [  ]
             initialRootPosition: [ 1, 1.5, 0 ]
             initialRootAttitude: [ 
@@ -174,18 +205,18 @@ items:
             selfCollisionDetection: false
             isEditable: true
         - 
-          id: 9
+          id: 11
           name: "Box 3"
           plugin: Body
           class: BodyItem
           data: 
             modelFile: "${PROJECT_DIR}/box.body"
             currentBaseLink: "Box"
-            rootPosition: [ -0.2, 2.3, 0 ]
+            rootPosition: [ -0.200000012, 2.29999994, -0.000497953833 ]
             rootAttitude: [ 
-              0.707106781, 0.707106781, 0, 
-              -0.707106781, 0.707106781, 0, 
-              0, 0, 1 ]
+              0.707106839, 0.707106723, 3.60887504e-06, 
+              -0.707106723, 0.707106839, 2.31003155e-06, 
+              -9.18421377e-07, -4.18529891e-06, 1 ]
             jointPositions: [  ]
             initialRootPosition: [ -0.2, 2.3, 0 ]
             initialRootAttitude: [ 
@@ -197,18 +228,18 @@ items:
             selfCollisionDetection: false
             isEditable: true
         - 
-          id: 10
+          id: 12
           name: "Box 4"
           plugin: Body
           class: BodyItem
           data: 
             modelFile: "${PROJECT_DIR}/box.body"
             currentBaseLink: "Box"
-            rootPosition: [ 1.6, 0.4, 0 ]
+            rootPosition: [ 1.60000007, 0.399999967, -0.000497971599 ]
             rootAttitude: [ 
-              0.866025404, -0.5, 0, 
-              0.5, 0.866025404, 0, 
-              0, 0, 1 ]
+              0.86602535, -0.500000093, -1.25874451e-06, 
+              0.500000093, 0.86602535, 4.03652537e-06, 
+              -9.2815841e-07, -4.12510566e-06, 1 ]
             jointPositions: [  ]
             initialRootPosition: [ 1.6, 0.4, 0 ]
             initialRootAttitude: [ 
@@ -220,7 +251,7 @@ items:
             selfCollisionDetection: false
             isEditable: true
     - 
-      id: 11
+      id: 13
       name: "Marks"
       plugin: Body
       class: BodyItem
@@ -259,9 +290,9 @@ views:
     class: ItemTreeView
     mounted: true
     state: 
-      selected: [ 3 ]
-      checked: [ 1, 2, 4, 6, 7, 8, 9, 10, 11 ]
-      expanded: [ 1, 2, 3 ]
+      selected: [ 6 ]
+      checked: [ 1, 2, 5, 8, 9, 10, 11, 12, 13 ]
+      expanded: [ 1, 2, 3, 6, 9, 10, 11, 12 ]
   - 
     id: 3
     plugin: Base
@@ -346,6 +377,7 @@ views:
       slider: true
       dial: false
       labelOnLeft: true
+      currentBodyItem: 2
   - 
     id: 7
     plugin: Body
@@ -353,6 +385,7 @@ views:
     mounted: true
     state: 
       listingMode: "Link List"
+      currentBodyItem: 2
   - 
     id: 8
     name: "RTC Diagram"
@@ -380,7 +413,7 @@ toolbars:
     frameRate: 100
     playbackFrameRate: 50
     idleLoopDrivenMode: false
-    currentTime: 77.59
+    currentTime: 4.58
     speedScale: 1
     syncToOngoingUpdates: true
     autoExpansion: true
@@ -394,6 +427,8 @@ toolbars:
     lazyCollisionDetectionMode: true
   "LeggedBodyBar": 
     stanceWidth: 0.15
+  "BodyBar": 
+    current: 2
   "BodyMotionGenerationBar": 
     autoGenerationForNewBody: true
     balancer: false
@@ -438,17 +473,7 @@ Body:
         showPpcom: false
         showZmp: false
       - 
-        bodyItem: 4
-        showCenterOfMass: false
-        showPpcom: false
-        showZmp: false
-      - 
-        bodyItem: 6
-        showCenterOfMass: false
-        showPpcom: false
-        showZmp: false
-      - 
-        bodyItem: 7
+        bodyItem: 5
         showCenterOfMass: false
         showPpcom: false
         showZmp: false
@@ -469,6 +494,16 @@ Body:
         showZmp: false
       - 
         bodyItem: 11
+        showCenterOfMass: false
+        showPpcom: false
+        showZmp: false
+      - 
+        bodyItem: 12
+        showCenterOfMass: false
+        showPpcom: false
+        showZmp: false
+      - 
+        bodyItem: 13
         showCenterOfMass: false
         showPpcom: false
         showZmp: false
