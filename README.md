@@ -2,7 +2,7 @@
 
 大阪電気通信大学  
 升谷 保博  
-2018年11月27日
+2019年8月7日
 
 ## はじめに
 
@@ -10,7 +10,7 @@
 - 以下の環境で開発，動作確認しています．
   - Windows 10 64bit版
   - Visual Studio 2015
-  - OpenRTM-aist 1.1.2 64bit版
+  - OpenRTM-aist 1.2.0 64bit版
   - Choreonoid 1.7（開発版）
   - VRMLモデルは，[ROSのTurtlebotのURDF](http://wiki.ros.org/turtlebot_description)を[simtrans](http://fkanehiro.github.io/simtrans/html-ja/index.html)でVRMLに変換したものを改変し，さらに手作業でbodyファイルに変換しました．力覚センサを使って，バンパセンサを模擬しています．測域センサと深度カメラも載せています．
 - ChoreonoidのBodyIoRTCのRTCモジュール（KobukiIoRTC）は独自に作成したものです．ポートの仕様は，[KobukiRTC](https://github.com/rt-net/kobuki_rtc)と互換になるようにしています．
@@ -34,9 +34,9 @@
 
 ## インストール
 
-- [OpenRTM-aist 1.1.2](http://www.openrtm.org/openrtm/ja/node/6034)をインストール．
-- [Choreonoid 開発版をインストール](http://choreonoid.org/ja/manuals/1.5/install/install.html)．
-  - Windowsの場合，Choreonoid本体をビルドしたVisual Stduioのバージョンや構成と，BodyIORTCのRTCモジュールをビルドするVisual Stduioのバージョンや構成が異なっていると，動作しません．
+- [OpenRTM-aist 1.2.0](https://www.openrtm.org/openrtm/ja/node/6570)をインストール．
+- [Choreonoid 開発版をインストール](https://choreonoid.org/ja/manuals/latest/install/install.html)．
+  - Windowsの場合，Choreonoid本体をビルドしたVisual Stduioのバージョンや構成と，BodyIoRTCのRTCモジュールをビルドするVisual Stduioのバージョンや構成が異なっていると，動作しません．
 - [KobukiForChoreonoid](https://github.com/MasutaniLab/KobukiForChoreonoid)
 をクローンかダウンロードする．
 - `KobukiIoRTC`
@@ -50,7 +50,7 @@
     - 正常終了したら，プロジェクト`INSTALL`をビルド．
   - Linuxの場合
     - `cd KobukiIoRTC; mkdir build; cd build; cmake ..; make; make install`
-  - WindowsとLinuxでプロジェクトファイルを共通にするために，コントローラモジュールの動的ライブラリ（Windowsではdllファイル，Linuxではsoファイル）を`KobukiIoRTC/build/module`にインストールするようにしています．
+  - WindowsとLinuxでプロジェクトファイルを共通にするために，コントローラモジュールの動的ライブラリ（Windowsではdllファイル，Linuxではsoファイル）を`KobukiIoRTC/rtc`にインストールするようにしています．
 - `wineggx`
   - Windowsの場合，`KobukiController`で利用するグラフィックスライブラリ．サブモジュールとしてクローンし，CMake，ビルドし，INSTALLをビルドする．
   - Linuxの場合は，[EGGX](https://www.ir.isas.jaxa.jp/~cyamauch/eggx_procall/index.ja.html)をインストールする．
