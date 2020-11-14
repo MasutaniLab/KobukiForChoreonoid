@@ -19,12 +19,12 @@
 ## 内容物
 
 - ロボットと環境のbodyファイル
-  - `model/turtlebot.wrl`（および，`model/*.wrl`）
+  - `model/turtlebot.body`（および，`model/*.wrl`）
   - `box.body`
   - `green-floor.body`
   - `marks.body`
   - `wall.body`
-- BodyIoRTCのコントローラモジュールのソースコード一式
+- BodyIoRTCのRTCモジュールのソースコード一式
   - ディレクトリ `KobukiIoRTC`
 - `KobukiIoRTC`と接続するRTコンポーネントの例
   - ディレクトリ `KobukiController`
@@ -50,7 +50,7 @@
     - 正常終了したら，プロジェクト`INSTALL`をビルド．
   - Linuxの場合
     - `cd KobukiIoRTC; mkdir build; cd build; cmake ..; make; make install`
-  - WindowsとLinuxでプロジェクトファイルを共通にするために，コントローラモジュールの動的ライブラリ（Windowsではdllファイル，Linuxではsoファイル）を`KobukiIoRTC/rtc`にインストールするようにしています．
+  - WindowsとLinuxでプロジェクトファイルを共通にするために，RTCモジュールの動的ライブラリ（Windowsではdllファイル，Linuxではsoファイル）を`KobukiIoRTC/rtc`にインストールするようにしています．
 - `wineggx`
   - Windowsの場合，`KobukiController`で利用するグラフィックスライブラリ．サブモジュールとしてクローンし，CMake，ビルドし，INSTALLをビルドする．
   - Linuxの場合は，[EGGX](https://www.ir.isas.jaxa.jp/~cyamauch/eggx_procall/index.ja.html)をインストールする．
